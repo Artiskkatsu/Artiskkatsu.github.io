@@ -1,22 +1,21 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="pl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Портфолио начинающего дизайнера</title>
+  <title>Portfolio — Junior Designer</title>
   <style>
     :root {
-      --bg: #f7f3ec;
-      --surface: #fffdf9;
-      --surface-soft: #eee6da;
-      --text: #1f1d1a;
-      --muted: #756f66;
-      --line: #ded4c6;
-      --accent: #7a5c43;
-      --accent-dark: #4b3829;
-      --shadow: 0 24px 70px rgba(41, 33, 24, 0.09);
-      --radius-xl: 32px;
-      --radius-md: 20px;
+      --paper: #f4f0e8;
+      --ink: #191815;
+      --muted: #6f6a60;
+      --line: #d7d0c4;
+      --milk: #fffaf0;
+      --clay: #b06645;
+      --sage: #7b8770;
+      --blue: #3d536b;
+      --sand: #d9c7a8;
+      --shadow: 0 22px 60px rgba(25, 24, 21, 0.10);
     }
 
     * {
@@ -31,11 +30,25 @@
 
     body {
       min-height: 100vh;
-      font-family: Inter, Arial, sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.6;
-      letter-spacing: -0.01em;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.45;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.28;
+      background-image:
+        linear-gradient(rgba(25, 24, 21, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(25, 24, 21, 0.04) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, black, transparent 92%);
+      z-index: -1;
     }
 
     a {
@@ -43,706 +56,967 @@
       text-decoration: none;
     }
 
-    img {
-      display: block;
-      width: 100%;
+    button {
+      font: inherit;
+      color: inherit;
+      background: none;
+      border: 0;
+      cursor: pointer;
     }
 
-    .container {
-      width: min(1180px, calc(100% - 40px));
+    .shell {
+      width: min(1440px, 100%);
+      min-height: 100vh;
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: 84px minmax(0, 1fr);
+      border-left: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      background: rgba(244, 240, 232, 0.78);
     }
 
-    header {
+    .rail {
       position: sticky;
       top: 0;
-      z-index: 20;
-      background: rgba(247, 243, 236, 0.86);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(222, 212, 198, 0.75);
-    }
-
-    nav {
-      height: 76px;
+      height: 100vh;
+      border-right: 1px solid var(--line);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      padding: 24px 0;
+      background: rgba(244, 240, 232, 0.9);
+      z-index: 10;
     }
 
-    .logo {
+    .mark {
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--ink);
+      display: grid;
+      place-items: center;
       font-family: Georgia, 'Times New Roman', serif;
-      font-size: 24px;
-      letter-spacing: -0.04em;
-      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: -0.08em;
+      transform: rotate(-3deg);
     }
 
-    .nav-links {
+    .rail-word {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .lang-switch {
+      display: grid;
+      gap: 8px;
+    }
+
+    .lang-btn {
+      width: 38px;
+      height: 32px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .lang-btn.is-active {
+      border-color: var(--ink);
+      background: var(--ink);
+      color: var(--milk);
+    }
+
+    .page {
+      min-width: 0;
+    }
+
+    .topbar {
+      height: 84px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      padding: 0 clamp(20px, 4vw, 58px);
+      background: rgba(244, 240, 232, 0.78);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 8;
+    }
+
+    .name {
       display: flex;
-      gap: 28px;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      align-items: baseline;
+    }
+
+    .name strong {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 26px;
+      font-weight: 500;
+      letter-spacing: -0.06em;
+    }
+
+    .name span {
+      color: var(--muted);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .top-links {
+      display: flex;
+      gap: 18px;
       color: var(--muted);
       font-size: 14px;
     }
 
-    .nav-links a {
-      transition: color 0.2s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    .nav-cta {
-      padding: 11px 17px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      font-size: 14px;
-      color: var(--accent-dark);
-      background: rgba(255, 253, 249, 0.6);
-      transition: background 0.2s ease, transform 0.2s ease;
-    }
-
-    .nav-cta:hover {
-      background: var(--surface);
-      transform: translateY(-1px);
+    .top-links a:hover {
+      color: var(--ink);
     }
 
     .hero {
-      padding: 96px 0 74px;
+      min-height: calc(100vh - 84px);
       display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap: 56px;
-      align-items: end;
-    }
-
-    .eyebrow {
-      margin-bottom: 20px;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    h1,
-    h2,
-    h3 {
-      font-weight: 500;
-      letter-spacing: -0.065em;
-      line-height: 0.98;
-    }
-
-    h1 {
-      font-family: Georgia, 'Times New Roman', serif;
-      max-width: 880px;
-      font-size: clamp(54px, 8vw, 112px);
-    }
-
-    .hero-text {
-      max-width: 620px;
-      margin-top: 28px;
-      font-size: 19px;
-      color: var(--muted);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 34px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 21px;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 14px;
-      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
-    }
-
-    .button-primary {
-      background: var(--text);
-      color: var(--surface);
-    }
-
-    .button-secondary {
-      border: 1px solid var(--line);
-      color: var(--accent-dark);
-      background: rgba(255, 253, 249, 0.52);
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-    }
-
-    .intro-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      padding: 26px;
-      box-shadow: var(--shadow);
-    }
-
-    .portrait {
-      min-height: 300px;
-      border-radius: 24px;
-      background: #e8ded1;
-      display: grid;
-      place-items: center;
-      margin-bottom: 22px;
-      color: var(--accent);
-      font-size: 62px;
-    }
-
-    .intro-card p {
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .meta-list {
-      display: grid;
-      gap: 12px;
-      margin-top: 22px;
-      padding-top: 22px;
-      border-top: 1px solid var(--line);
-    }
-
-    .meta-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .meta-item strong {
-      color: var(--text);
-      font-weight: 700;
-    }
-
-    section {
-      padding: 76px 0;
-    }
-
-    .section-head {
-      display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
-      gap: 34px;
-      align-items: end;
-      margin-bottom: 34px;
-      padding-bottom: 26px;
+      grid-template-columns: minmax(320px, 0.92fr) minmax(420px, 1.08fr);
       border-bottom: 1px solid var(--line);
     }
 
-    h2 {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: clamp(38px, 5vw, 68px);
-    }
-
-    .section-head p {
-      max-width: 650px;
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    .work-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 18px;
-    }
-
-    .work-item {
-      grid-column: span 4;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      box-shadow: 0 14px 40px rgba(41, 33, 24, 0.05);
-      transition: transform 0.22s ease, box-shadow 0.22s ease;
-    }
-
-    .work-item:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow);
-    }
-
-    .work-item.large {
-      grid-column: span 8;
-    }
-
-    .work-item.tall {
-      grid-row: span 2;
-    }
-
-    .work-cover {
-      min-height: 250px;
-      background: var(--surface-soft);
-      display: grid;
-      place-items: center;
-      color: rgba(31, 29, 26, 0.42);
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: clamp(42px, 7vw, 82px);
-      letter-spacing: -0.08em;
-    }
-
-    .work-item.large .work-cover {
-      min-height: 390px;
-    }
-
-    .work-item.tall .work-cover {
-      min-height: 520px;
-    }
-
-    .tone-1 { background: #e9dfd0; }
-    .tone-2 { background: #d9d1c3; }
-    .tone-3 { background: #f1eee8; }
-    .tone-4 { background: #ddd2c2; }
-    .tone-5 { background: #e6e0d6; }
-    .tone-6 { background: #cfc4b5; }
-    .tone-7 { background: #efe7dc; }
-    .tone-8 { background: #d8cbbb; }
-
-    .work-body {
-      padding: 20px 20px 22px;
-    }
-
-    .work-topline {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      margin-bottom: 12px;
-      color: var(--muted);
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-    }
-
-    .work-body h3 {
-      font-size: 26px;
-      margin-bottom: 9px;
-    }
-
-    .work-body p {
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .skills {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 18px;
-    }
-
-    .skill-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      padding: 26px;
-      min-height: 220px;
-    }
-
-    .skill-card span {
-      display: block;
-      margin-bottom: 36px;
-      color: var(--accent);
-      font-size: 13px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
-    .skill-card h3 {
-      font-size: 28px;
-      margin-bottom: 12px;
-    }
-
-    .skill-card p {
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 18px;
-    }
-
-    .about-visual {
-      min-height: 520px;
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--line);
-      background: #e6ded3;
-      display: grid;
-      place-items: center;
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: clamp(70px, 10vw, 140px);
-      color: rgba(31, 29, 26, 0.35);
-    }
-
-    .about-content {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      padding: clamp(28px, 5vw, 54px);
+    .statement {
+      padding: clamp(28px, 5vw, 70px);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 40px;
+      gap: 48px;
+      border-right: 1px solid var(--line);
     }
 
-    .about-content p {
+    .eyebrow {
       color: var(--muted);
-      font-size: 18px;
-      max-width: 650px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 12px;
     }
 
-    .about-list {
-      display: grid;
-      gap: 14px;
+    h1 {
+      max-width: 720px;
+      margin-top: 26px;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 500;
+      font-size: clamp(48px, 6.9vw, 104px);
+      line-height: 0.9;
+      letter-spacing: -0.085em;
+    }
+
+    .lead {
+      max-width: 560px;
+      margin-top: 30px;
       color: var(--muted);
+      font-size: clamp(17px, 1.5vw, 21px);
     }
 
-    .about-list li {
-      list-style: none;
-      padding-top: 14px;
-      border-top: 1px solid var(--line);
-    }
-
-    .about-list strong {
-      color: var(--text);
-    }
-
-    .contact {
-      padding-bottom: 96px;
-    }
-
-    .contact-box {
-      background: var(--text);
-      color: var(--surface);
-      border-radius: 38px;
-      padding: clamp(34px, 6vw, 66px);
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 34px;
-      align-items: end;
-      box-shadow: var(--shadow);
-    }
-
-    .contact-box h2 {
-      color: var(--surface);
-    }
-
-    .contact-box p {
-      color: rgba(255, 253, 249, 0.72);
-      margin-top: 18px;
-      max-width: 600px;
-      font-size: 17px;
-    }
-
-    .contact-links {
-      display: grid;
-      gap: 12px;
-    }
-
-    .contact-links a {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 18px;
-      padding: 16px 18px;
-      border: 1px solid rgba(255, 253, 249, 0.18);
-      border-radius: 999px;
-      color: var(--surface);
-      transition: background 0.2s ease;
-    }
-
-    .contact-links a:hover {
-      background: rgba(255, 253, 249, 0.08);
-    }
-
-    footer {
-      padding: 28px 0 44px;
+    .note-card {
+      max-width: 530px;
+      padding: 18px 0 0;
       border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: 14px;
     }
 
-    .footer-inner {
+    .note-card strong {
+      color: var(--ink);
+    }
+
+    .work-stage {
+      display: grid;
+      grid-template-columns: 255px minmax(0, 1fr);
+      min-height: calc(100vh - 84px);
+    }
+
+    .work-index {
+      border-right: 1px solid var(--line);
+      padding: 22px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: rgba(255, 250, 240, 0.28);
+    }
+
+    .index-title {
+      padding: 0 18px 18px;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .project-list {
+      display: grid;
+    }
+
+    .project-btn {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 12px;
+      padding: 16px 18px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .project-btn:hover,
+    .project-btn.is-active {
+      background: var(--ink);
+      color: var(--milk);
+    }
+
+    .project-btn span:first-child {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+    }
+
+    .project-btn span:last-child {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 18px;
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+    }
+
+    .index-footer {
+      padding: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+    }
+
+    .preview {
+      padding: clamp(20px, 3vw, 42px);
+      display: grid;
+      grid-template-rows: minmax(360px, 1fr) auto;
+      gap: 24px;
+    }
+
+    .preview-art {
+      position: relative;
+      overflow: hidden;
+      min-height: 360px;
+      background: var(--sand);
+      box-shadow: inset 0 0 0 1px rgba(25, 24, 21, 0.12);
+    }
+
+    .preview-art::before {
+      content: "";
+      position: absolute;
+      inset: 22px;
+      border: 1px solid rgba(25, 24, 21, 0.32);
+      pointer-events: none;
+    }
+
+    .preview-art::after {
+      content: attr(data-number);
+      position: absolute;
+      right: -0.09em;
+      bottom: -0.24em;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(180px, 24vw, 360px);
+      line-height: 1;
+      letter-spacing: -0.13em;
+      color: rgba(25, 24, 21, 0.16);
+    }
+
+    .art-label {
+      position: absolute;
+      top: 42px;
+      left: 42px;
+      max-width: 280px;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(32px, 4vw, 58px);
+      line-height: 0.94;
+      letter-spacing: -0.08em;
+      z-index: 1;
+    }
+
+    .art-chip {
+      position: absolute;
+      left: 42px;
+      bottom: 42px;
+      padding: 10px 12px;
+      background: rgba(255, 250, 240, 0.72);
+      border: 1px solid rgba(25, 24, 21, 0.18);
+      color: var(--ink);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      z-index: 1;
+    }
+
+    .preview-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .preview-meta h2 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 500;
+      font-size: clamp(34px, 4vw, 62px);
+      line-height: 0.94;
+      letter-spacing: -0.075em;
+    }
+
+    .preview-copy {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .fact {
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 240, 0.36);
+      color: var(--ink);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .below {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .panel {
+      min-height: 430px;
+      padding: clamp(28px, 5vw, 64px);
+      border-right: 1px solid var(--line);
+    }
+
+    .panel:last-child {
+      border-right: 0;
+    }
+
+    .panel h2 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 500;
+      font-size: clamp(38px, 5vw, 74px);
+      line-height: 0.92;
+      letter-spacing: -0.08em;
+    }
+
+    .panel p {
+      max-width: 620px;
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .service-list {
+      margin-top: 36px;
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .service-list li {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 18px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .service-list strong {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .contact-card {
+      min-height: 430px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--ink);
+      color: var(--milk);
+      padding: clamp(28px, 5vw, 64px);
+    }
+
+    .contact-card h2 {
+      max-width: 760px;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 500;
+      font-size: clamp(44px, 6vw, 94px);
+      line-height: 0.9;
+      letter-spacing: -0.085em;
+    }
+
+    .contact-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid rgba(255, 250, 240, 0.22);
+    }
+
+    .contact-row a {
+      padding: 18px 0;
+      border-right: 1px solid rgba(255, 250, 240, 0.22);
+      color: rgba(255, 250, 240, 0.72);
+      transition: color 0.2s ease;
+    }
+
+    .contact-row a:last-child {
+      border-right: 0;
+      padding-left: 20px;
+    }
+
+    .contact-row a:hover {
+      color: var(--milk);
+    }
+
+    .contact-row span {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(255, 250, 240, 0.42);
+    }
+
+    footer {
       display: flex;
       justify-content: space-between;
       gap: 20px;
+      padding: 24px clamp(20px, 4vw, 58px);
+      color: var(--muted);
+      font-size: 13px;
     }
 
-    @media (max-width: 920px) {
-      .hero,
-      .section-head,
-      .about-grid,
-      .contact-box {
+    @media (max-width: 1080px) {
+      .shell {
         grid-template-columns: 1fr;
       }
 
-      .work-item,
-      .work-item.large {
-        grid-column: span 6;
+      .rail {
+        position: fixed;
+        right: 14px;
+        bottom: 14px;
+        top: auto;
+        width: auto;
+        height: auto;
+        padding: 8px;
+        border: 1px solid var(--line);
+        flex-direction: row;
+        gap: 12px;
+        box-shadow: var(--shadow);
       }
 
-      .skills {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .container {
-        width: min(100% - 28px, 1180px);
-      }
-
-      nav {
-        height: 68px;
-      }
-
-      .nav-links {
+      .rail-word {
         display: none;
       }
 
-      .nav-cta {
+      .lang-switch {
+        display: flex;
+      }
+
+      .hero,
+      .below {
+        grid-template-columns: 1fr;
+      }
+
+      .statement {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .work-stage {
+        min-height: auto;
+        grid-template-columns: 1fr;
+      }
+
+      .work-index {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .project-list {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .project-btn {
+        min-height: 104px;
+      }
+
+      .index-footer {
+        display: none;
+      }
+
+      .panel {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .topbar {
+        height: auto;
+        min-height: 74px;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+      }
+
+      .top-links {
         display: none;
       }
 
       .hero {
-        padding: 62px 0 46px;
+        min-height: auto;
       }
 
-      section {
-        padding: 54px 0;
+      .project-list {
+        grid-template-columns: 1fr 1fr;
       }
 
-      .work-grid {
-        gap: 14px;
+      .preview {
+        grid-template-rows: auto auto;
       }
 
-      .work-item,
-      .work-item.large,
-      .work-item.tall {
-        grid-column: span 12;
+      .preview-art {
+        min-height: 340px;
       }
 
-      .work-item.large .work-cover,
-      .work-item.tall .work-cover,
-      .work-cover {
-        min-height: 270px;
+      .preview-meta,
+      .contact-row {
+        grid-template-columns: 1fr;
       }
 
-      .footer-inner {
+      .contact-row a,
+      .contact-row a:last-child {
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 250, 240, 0.22);
+        padding-left: 0;
+      }
+
+      footer {
         flex-direction: column;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <nav class="container">
-      <a class="logo" href="#">Имя Фамилия</a>
-      <div class="nav-links">
-        <a href="#works">Работы</a>
-        <a href="#skills">Навыки</a>
-        <a href="#about">Обо мне</a>
+  <div class="shell">
+    <aside class="rail" aria-label="Language switch">
+      <a class="mark" href="#" aria-label="Home">IF</a>
+      <div class="rail-word">portfolio index</div>
+      <div class="lang-switch">
+        <button class="lang-btn is-active" type="button" data-lang="pl">PL</button>
+        <button class="lang-btn" type="button" data-lang="en">EN</button>
       </div>
-      <a class="nav-cta" href="#contact">Связаться</a>
-    </nav>
-  </header>
+    </aside>
 
-  <main>
-    <section class="hero container">
-      <div>
-        <div class="eyebrow">Начинающий дизайнер · портфолио</div>
-        <h1>Визуальные решения с чистой подачей и вниманием к деталям.</h1>
-        <p class="hero-text">
-          Я собираю первые проекты в дизайне: айдентика, лендинги, интерфейсы, визуалы для социальных сетей
-          и небольшие концепты. Здесь — не только избранное, а вся моя практика, чтобы было видно рост, вкус и подход.
-        </p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#works">Смотреть все работы</a>
-          <a class="button button-secondary" href="mailto:hello@example.com">hello@example.com</a>
+    <div class="page">
+      <header class="topbar">
+        <div class="name">
+          <strong data-i18n="name">Imię Nazwisko</strong>
+          <span data-i18n="role">junior designer / visual systems</span>
         </div>
-      </div>
+        <nav class="top-links" aria-label="Main navigation">
+          <a href="#work" data-i18n="navWork">Prace</a>
+          <a href="#about" data-i18n="navAbout">O mnie</a>
+          <a href="#contact" data-i18n="navContact">Kontakt</a>
+        </nav>
+      </header>
 
-      <aside class="intro-card">
-        <div class="portrait">ID</div>
-        <p>
-          Делаю аккуратный визуал для брендов, личных проектов и digital-продуктов. Учусь, экспериментирую
-          и постепенно собираю сильную базу.
-        </p>
-        <div class="meta-list">
-          <div class="meta-item"><span>Фокус</span><strong>UI · branding · layout</strong></div>
-          <div class="meta-item"><span>Стиль</span><strong>clean · calm · editorial</strong></div>
-          <div class="meta-item"><span>Статус</span><strong>open to projects</strong></div>
-        </div>
-      </aside>
-    </section>
-
-    <section id="works" class="container">
-      <div class="section-head">
-        <h2>Все работы</h2>
-        <p>
-          Сетка сделана так, чтобы портфолио выглядело цельно даже без большого количества реальных кейсов.
-          Замените заглушки на скриншоты, обложки, постеры или фрагменты макетов.
-        </p>
-      </div>
-
-      <div class="work-grid">
-        <article class="work-item large">
-          <div class="work-cover tone-1">01</div>
-          <div class="work-body">
-            <div class="work-topline"><span>Landing page</span><span>2026</span></div>
-            <h3>Лендинг для студии ухода</h3>
-            <p>Концепция спокойного сайта с услугами, записью и мягкой визуальной системой.</p>
+      <main>
+        <section class="hero" id="work">
+          <div class="statement">
+            <div>
+              <div class="eyebrow" data-i18n="eyebrow">Portfolio początkującej projektantki</div>
+              <h1 data-i18n="headline">Nie idealne case study. Raczej żywy indeks pracy, prób i decyzji.</h1>
+              <p class="lead" data-i18n="lead">
+                Projektuję identyfikacje, proste strony, układy i materiały do social mediów. To portfolio pokazuje wszystko: małe ćwiczenia, większe koncepcje i kierunek, w którym rozwijam swój język wizualny.
+              </p>
+            </div>
+            <div class="note-card">
+              <strong data-i18n="noteTitle">Bez przewijania do projektów.</strong>
+              <span data-i18n="noteText"> Wybierz pracę z indeksu po prawej — podgląd i opis zmienią się od razu.</span>
+            </div>
           </div>
-        </article>
 
-        <article class="work-item tall">
-          <div class="work-cover tone-2">02</div>
-          <div class="work-body">
-            <div class="work-topline"><span>Brand identity</span><span>2026</span></div>
-            <h3>Айдентика для кофейни</h3>
-            <p>Логотип, палитра, карточки меню и несколько носителей для маленького бренда.</p>
+          <div class="work-stage">
+            <aside class="work-index">
+              <div>
+                <div class="index-title" data-i18n="indexTitle">Index prac</div>
+                <div class="project-list" id="projectList"></div>
+              </div>
+              <div class="index-footer" data-i18n="indexFooter">Kliknij tytuł, żeby przełączyć projekt bez opuszczania pierwszego ekranu.</div>
+            </aside>
+
+            <article class="preview" aria-live="polite">
+              <div class="preview-art" id="previewArt" data-number="01">
+                <div class="art-label" id="artLabel">Studio skin care</div>
+                <div class="art-chip" id="artChip">Landing page</div>
+              </div>
+              <div class="preview-meta">
+                <h2 id="projectTitle">Strona dla studia pielęgnacji</h2>
+                <div class="preview-copy">
+                  <p id="projectDescription">Spokojna koncepcja strony z usługami, rezerwacją i prostą strukturą informacji.</p>
+                  <div class="facts" id="facts"></div>
+                </div>
+              </div>
+            </article>
           </div>
-        </article>
+        </section>
 
-        <article class="work-item">
-          <div class="work-cover tone-3">03</div>
-          <div class="work-body">
-            <div class="work-topline"><span>Social media</span><span>2026</span></div>
-            <h3>Серия постов</h3>
-            <p>Визуальная система для экспертного блога: обложки, цитаты, карусели.</p>
+        <section class="below" id="about">
+          <div class="panel">
+            <div class="eyebrow" data-i18n="aboutEyebrow">O podejściu</div>
+            <h2 data-i18n="aboutTitle">Na początku drogi liczy się nie udawanie doświadczenia, tylko dobry sposób patrzenia.</h2>
+            <p data-i18n="aboutText">
+              Dlatego zamiast robić stronę z trzema „najlepszymi” projektami, pokazuję cały zbiór prac. Widać w nim próby, rytm, typografię, decyzje kompozycyjne i to, jak myślę o wizualnej stronie projektu.
+            </p>
           </div>
-        </article>
 
-        <article class="work-item">
-          <div class="work-cover tone-4">04</div>
-          <div class="work-body">
-            <div class="work-topline"><span>UI concept</span><span>2026</span></div>
-            <h3>Приложение привычек</h3>
-            <p>Мини-концепт интерфейса с онбордингом, главной страницей и карточками прогресса.</p>
+          <div class="panel">
+            <div class="eyebrow" data-i18n="skillsEyebrow">Zakres</div>
+            <h2 data-i18n="skillsTitle">Co mogę zrobić</h2>
+            <ul class="service-list">
+              <li><span>01</span><span><strong data-i18n="skill1Title">Layouty i strony</strong><br><span data-i18n="skill1Text">proste landing page, portfolio, strony usługowe, układy mobilne</span></span></li>
+              <li><span>02</span><span><strong data-i18n="skill2Title">Identyfikacje wizualne</strong><br><span data-i18n="skill2Text">logo, palety, typografia, moodboardy, podstawowe systemy</span></span></li>
+              <li><span>03</span><span><strong data-i18n="skill3Title">Materiały digital</strong><br><span data-i18n="skill3Text">posty, karuzele, plakaty, prezentacje i okładki</span></span></li>
+            </ul>
           </div>
-        </article>
+        </section>
 
-        <article class="work-item">
-          <div class="work-cover tone-5">05</div>
-          <div class="work-body">
-            <div class="work-topline"><span>Poster</span><span>2026</span></div>
-            <h3>Плакат мероприятия</h3>
-            <p>Типографический постер с акцентом на композицию, ритм и настроение события.</p>
-          </div>
-        </article>
-
-        <article class="work-item large">
-          <div class="work-cover tone-6">06</div>
-          <div class="work-body">
-            <div class="work-topline"><span>Website concept</span><span>2026</span></div>
-            <h3>Сайт для личного бренда</h3>
-            <p>Главная страница, блок услуг, отзывы и контактный экран в спокойной премиальной эстетике.</p>
-          </div>
-        </article>
-
-        <article class="work-item">
-          <div class="work-cover tone-7">07</div>
-          <div class="work-body">
-            <div class="work-topline"><span>Packaging</span><span>2026</span></div>
-            <h3>Упаковка свечей</h3>
-            <p>Этикетка, карточка ухода и визуальная подача для небольшого lifestyle-продукта.</p>
-          </div>
-        </article>
-
-        <article class="work-item">
-          <div class="work-cover tone-8">08</div>
-          <div class="work-body">
-            <div class="work-topline"><span>Editorial</span><span>2026</span></div>
-            <h3>Разворот журнала</h3>
-            <p>Практика сетки, крупной типографики и баланса между текстом и изображением.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="skills" class="container">
-      <div class="section-head">
-        <h2>Что я умею</h2>
-        <p>
-          Пока я в начале пути, поэтому показываю честный набор навыков: база, внимательность,
-          вкус к чистой композиции и желание делать проекты лучше с каждой итерацией.
-        </p>
-      </div>
-
-      <div class="skills">
-        <article class="skill-card">
-          <span>01</span>
-          <h3>Визуальная система</h3>
-          <p>Подбираю палитру, шрифты, референсы, настроение и правила, чтобы проект выглядел цельно.</p>
-        </article>
-
-        <article class="skill-card">
-          <span>02</span>
-          <h3>Макеты и интерфейсы</h3>
-          <p>Делаю аккуратные лендинги, экраны приложений и простые сценарии с понятной структурой.</p>
-        </article>
-
-        <article class="skill-card">
-          <span>03</span>
-          <h3>Подача проекта</h3>
-          <p>Оформляю работы так, чтобы было видно задачу, процесс, визуальные решения и результат.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="about" class="container">
-      <div class="about-grid">
-        <div class="about-visual">A</div>
-        <div class="about-content">
+        <section class="contact-card" id="contact">
           <div>
-            <div class="eyebrow">Обо мне</div>
-            <h2>Я начинаю в дизайне, но уже отношусь к проектам внимательно.</h2>
+            <div class="eyebrow" data-i18n="contactEyebrow">Kontakt</div>
+            <h2 data-i18n="contactTitle">Masz mały projekt, staż albo zadanie na start?</h2>
           </div>
-          <p>
-            Мне нравится находить спокойные, чистые решения: выстраивать сетку, работать с типографикой,
-            делать визуал аккуратным и понятным. Сейчас я собираю портфолио, учусь на каждом проекте и открыта
-            к небольшим задачам, стажировкам и коллаборациям.
-          </p>
-          <ul class="about-list">
-            <li><strong>Инструменты:</strong> Figma, Photoshop, Illustrator, базовый HTML/CSS</li>
-            <li><strong>Интересы:</strong> брендинг, сайты, editorial layout, social media design</li>
-            <li><strong>Подход:</strong> сначала смысл и структура, потом визуальная выразительность</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+          <div class="contact-row">
+            <a href="mailto:hello@example.com"><span>Email</span>hello@example.com</a>
+            <a href="https://t.me/username"><span>Telegram</span>@username</a>
+            <a href="https://behance.net/username"><span>Behance</span>/username</a>
+          </div>
+        </section>
+      </main>
 
-    <section id="contact" class="container contact">
-      <div class="contact-box">
-        <div>
-          <h2>Открыта к первым проектам и стажировкам.</h2>
-          <p>
-            Напишите, если вам нужен аккуратный визуал, оформление проекта, лендинг или помощь с презентацией.
-            Я быстро включаюсь, задаю вопросы и довожу макеты до чистого состояния.
-          </p>
-        </div>
-        <div class="contact-links">
-          <a href="mailto:hello@example.com"><span>Email</span><strong>hello@example.com</strong></a>
-          <a href="https://t.me/username"><span>Telegram</span><strong>@username</strong></a>
-          <a href="https://behance.net/username"><span>Behance</span><strong>/username</strong></a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <span>© 2026 Имя Фамилия</span>
-      <span>Portfolio · junior designer</span>
+      <footer>
+        <span data-i18n="footerLeft">© 2026 Imię Nazwisko</span>
+        <span data-i18n="footerRight">Junior designer · portfolio index</span>
+      </footer>
     </div>
-  </footer>
+  </div>
+
+  <script>
+    const dictionary = {
+      pl: {
+        name: 'Imię Nazwisko',
+        role: 'junior designer / visual systems',
+        navWork: 'Prace',
+        navAbout: 'O mnie',
+        navContact: 'Kontakt',
+        eyebrow: 'Portfolio początkującej projektantki',
+        headline: 'Nie idealne case study. Raczej żywy indeks pracy, prób i decyzji.',
+        lead: 'Projektuję identyfikacje, proste strony, układy i materiały do social mediów. To portfolio pokazuje wszystko: małe ćwiczenia, większe koncepcje i kierunek, w którym rozwijam swój język wizualny.',
+        noteTitle: 'Bez przewijania do projektów.',
+        noteText: ' Wybierz pracę z indeksu po prawej — podgląd i opis zmienią się od razu.',
+        indexTitle: 'Index prac',
+        indexFooter: 'Kliknij tytuł, żeby przełączyć projekt bez opuszczania pierwszego ekranu.',
+        aboutEyebrow: 'O podejściu',
+        aboutTitle: 'Na początku drogi liczy się nie udawanie doświadczenia, tylko dobry sposób patrzenia.',
+        aboutText: 'Dlatego zamiast robić stronę z trzema „najlepszymi” projektami, pokazuję cały zbiór prac. Widać w nim próby, rytm, typografię, decyzje kompozycyjne i to, jak myślę o wizualnej stronie projektu.',
+        skillsEyebrow: 'Zakres',
+        skillsTitle: 'Co mogę zrobić',
+        skill1Title: 'Layouty i strony',
+        skill1Text: 'proste landing page, portfolio, strony usługowe, układy mobilne',
+        skill2Title: 'Identyfikacje wizualne',
+        skill2Text: 'logo, palety, typografia, moodboardy, podstawowe systemy',
+        skill3Title: 'Materiały digital',
+        skill3Text: 'posty, karuzele, plakaty, prezentacje i okładki',
+        contactEyebrow: 'Kontakt',
+        contactTitle: 'Masz mały projekt, staż albo zadanie na start?',
+        footerLeft: '© 2026 Imię Nazwisko',
+        footerRight: 'Junior designer · portfolio index'
+      },
+      en: {
+        name: 'Name Surname',
+        role: 'junior designer / visual systems',
+        navWork: 'Work',
+        navAbout: 'About',
+        navContact: 'Contact',
+        eyebrow: 'Portfolio of a junior designer',
+        headline: 'Not a perfect case-study page. More like a living index of work, attempts and decisions.',
+        lead: 'I design identities, simple websites, layouts and social media materials. This portfolio shows the full range: small exercises, larger concepts and the direction in which my visual language is developing.',
+        noteTitle: 'No scrolling to projects.',
+        noteText: ' Choose a piece from the index on the right — the preview and description update instantly.',
+        indexTitle: 'Work index',
+        indexFooter: 'Click a title to switch projects without leaving the first screen.',
+        aboutEyebrow: 'Approach',
+        aboutTitle: 'At the beginning, it is not about pretending to have experience. It is about learning to look well.',
+        aboutText: 'Instead of building a page around three “best” projects, I show the whole body of work. You can see attempts, rhythm, typography, composition choices and the way I think visually.',
+        skillsEyebrow: 'Scope',
+        skillsTitle: 'What I can do',
+        skill1Title: 'Layouts and websites',
+        skill1Text: 'simple landing pages, portfolios, service websites, mobile layouts',
+        skill2Title: 'Visual identities',
+        skill2Text: 'logos, palettes, typography, moodboards, basic systems',
+        skill3Title: 'Digital materials',
+        skill3Text: 'posts, carousels, posters, presentations and covers',
+        contactEyebrow: 'Contact',
+        contactTitle: 'Have a small project, internship or starter task?',
+        footerLeft: '© 2026 Name Surname',
+        footerRight: 'Junior designer · portfolio index'
+      }
+    };
+
+    const projects = {
+      pl: [
+        {
+          number: '01',
+          short: 'Skin care',
+          title: 'Strona dla studia pielęgnacji',
+          type: 'Landing page',
+          label: 'Studio skin care',
+          description: 'Spokojna koncepcja strony z usługami, rezerwacją i prostą strukturą informacji.',
+          facts: ['Figma', 'desktop + mobile', 'visual direction'],
+          color: '#d9c7a8'
+        },
+        {
+          number: '02',
+          short: 'Kawiarnia',
+          title: 'Identyfikacja dla małej kawiarni',
+          type: 'Brand identity',
+          label: 'Coffee mark',
+          description: 'Znak, paleta, karta menu i kilka nośników dla kameralnego miejsca z własnym charakterem.',
+          facts: ['logo', 'palette', 'menu cards'],
+          color: '#aeb39f'
+        },
+        {
+          number: '03',
+          short: 'Blog',
+          title: 'System postów dla bloga eksperckiego',
+          type: 'Social media',
+          label: 'Editorial posts',
+          description: 'Szablony karuzel, cytatów i okładek, które pomagają utrzymać spójność bez nudy.',
+          facts: ['templates', 'typography', 'content system'],
+          color: '#c9b8a6'
+        },
+        {
+          number: '04',
+          short: 'Aplikacja',
+          title: 'Koncept aplikacji do nawyków',
+          type: 'UI concept',
+          label: 'Habit app',
+          description: 'Kilka ekranów aplikacji z naciskiem na prosty onboarding, kartę dnia i mikrointerakcje.',
+          facts: ['mobile UI', 'onboarding', 'components'],
+          color: '#b8c0bd'
+        },
+        {
+          number: '05',
+          short: 'Plakat',
+          title: 'Plakat wydarzenia kulturalnego',
+          type: 'Poster',
+          label: 'Type poster',
+          description: 'Ćwiczenie z dużą typografią, hierarchią i napięciem między pustą przestrzenią a tekstem.',
+          facts: ['print', 'composition', 'type'],
+          color: '#c89472'
+        },
+        {
+          number: '06',
+          short: 'Personal brand',
+          title: 'Strona dla marki osobistej',
+          type: 'Website concept',
+          label: 'Personal site',
+          description: 'Układ strony z ofertą, sekcją o autorze, opiniami i mocnym ekranem kontaktowym.',
+          facts: ['website', 'copy structure', 'layout'],
+          color: '#8f9a8a'
+        },
+        {
+          number: '07',
+          short: 'Świece',
+          title: 'Etykiety dla świec sojowych',
+          type: 'Packaging',
+          label: 'Candle label',
+          description: 'Delikatny system etykiet i kart produktowych dla małego lifestyle’owego produktu.',
+          facts: ['packaging', 'labels', 'product card'],
+          color: '#d6cfc1'
+        },
+        {
+          number: '08',
+          short: 'Magazyn',
+          title: 'Rozkładówka magazynu',
+          type: 'Editorial',
+          label: 'Magazine spread',
+          description: 'Praktyka siatki, rytmu kolumn, podpisów i równowagi między obrazem a tekstem.',
+          facts: ['grid', 'editorial', 'layout'],
+          color: '#a7a094'
+        }
+      ],
+      en: [
+        {
+          number: '01',
+          short: 'Skin care',
+          title: 'Website for a skin care studio',
+          type: 'Landing page',
+          label: 'Skin care studio',
+          description: 'A calm website concept with services, booking and a simple information structure.',
+          facts: ['Figma', 'desktop + mobile', 'visual direction'],
+          color: '#d9c7a8'
+        },
+        {
+          number: '02',
+          short: 'Coffee shop',
+          title: 'Identity for a small coffee shop',
+          type: 'Brand identity',
+          label: 'Coffee mark',
+          description: 'A mark, palette, menu cards and a few applications for a small place with its own character.',
+          facts: ['logo', 'palette', 'menu cards'],
+          color: '#aeb39f'
+        },
+        {
+          number: '03',
+          short: 'Blog',
+          title: 'Post system for an expert blog',
+          type: 'Social media',
+          label: 'Editorial posts',
+          description: 'Carousel, quote and cover templates that keep the feed consistent without making it flat.',
+          facts: ['templates', 'typography', 'content system'],
+          color: '#c9b8a6'
+        },
+        {
+          number: '04',
+          short: 'App',
+          title: 'Habit app concept',
+          type: 'UI concept',
+          label: 'Habit app',
+          description: 'A small set of app screens focused on onboarding, the daily view and lightweight components.',
+          facts: ['mobile UI', 'onboarding', 'components'],
+          color: '#b8c0bd'
+        },
+        {
+          number: '05',
+          short: 'Poster',
+          title: 'Poster for a cultural event',
+          type: 'Poster',
+          label: 'Type poster',
+          description: 'An exercise in large typography, hierarchy and the tension between text and negative space.',
+          facts: ['print', 'composition', 'type'],
+          color: '#c89472'
+        },
+        {
+          number: '06',
+          short: 'Personal brand',
+          title: 'Website for a personal brand',
+          type: 'Website concept',
+          label: 'Personal site',
+          description: 'A page structure with an offer, about section, testimonials and a strong contact screen.',
+          facts: ['website', 'copy structure', 'layout'],
+          color: '#8f9a8a'
+        },
+        {
+          number: '07',
+          short: 'Candles',
+          title: 'Labels for soy candles',
+          type: 'Packaging',
+          label: 'Candle label',
+          description: 'A delicate label and product-card system for a small lifestyle product.',
+          facts: ['packaging', 'labels', 'product card'],
+          color: '#d6cfc1'
+        },
+        {
+          number: '08',
+          short: 'Magazine',
+          title: 'Magazine spread',
+          type: 'Editorial',
+          label: 'Magazine spread',
+          description: 'Practice with grids, column rhythm, captions and balance between image and text.',
+          facts: ['grid', 'editorial', 'layout'],
+          color: '#a7a094'
+        }
+      ]
+    };
+
+    let currentLang = 'pl';
+    let currentProject = 0;
+
+    const projectList = document.getElementById('projectList');
+    const previewArt = document.getElementById('previewArt');
+    const artLabel = document.getElementById('artLabel');
+    const artChip = document.getElementById('artChip');
+    const projectTitle = document.getElementById('projectTitle');
+    const projectDescription = document.getElementById('projectDescription');
+    const facts = document.getElementById('facts');
+
+    function translatePage(lang) {
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach((element) => {
+        const key = element.getAttribute('data-i18n');
+        element.textContent = dictionary[lang][key];
+      });
+    }
+
+    function renderProjectButtons() {
+      projectList.innerHTML = '';
+      projects[currentLang].forEach((project, index) => {
+        const button = document.createElement('button');
+        button.className = `project-btn${index === currentProject ? ' is-active' : ''}`;
+        button.type = 'button';
+        button.innerHTML = `<span>${project.number}</span><span>${project.short}</span>`;
+        button.addEventListener('click', () => {
+          currentProject = index;
+          renderProjectButtons();
+          renderProject();
+        });
+        projectList.appendChild(button);
+      });
+    }
+
+    function renderProject() {
+      const project = projects[currentLang][currentProject];
+      previewArt.dataset.number = project.number;
+      previewArt.style.background = project.color;
+      artLabel.textContent = project.label;
+      artChip.textContent = project.type;
+      projectTitle.textContent = project.title;
+      projectDescription.textContent = project.description;
+      facts.innerHTML = project.facts.map((fact) => `<span class="fact">${fact}</span>`).join('');
+    }
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      translatePage(lang);
+      document.querySelectorAll('.lang-btn').forEach((button) => {
+        button.classList.toggle('is-active', button.dataset.lang === lang);
+      });
+      renderProjectButtons();
+      renderProject();
+    }
+
+    document.querySelectorAll('.lang-btn').forEach((button) => {
+      button.addEventListener('click', () => setLanguage(button.dataset.lang));
+    });
+
+    setLanguage(currentLang);
+  </script>
 </body>
 </html>
