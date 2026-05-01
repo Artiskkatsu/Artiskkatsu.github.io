@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio — Junior Designer</title>
+  <title>CV Portfolio — Junior Designer</title>
   <style>
     :root {
       --paper: #f4f0e8;
@@ -220,6 +220,41 @@
       margin-top: 30px;
       color: var(--muted);
       font-size: clamp(17px, 1.5vw, 21px);
+    }
+
+    .application-meta {
+      max-width: 640px;
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .application-meta div {
+      min-height: 94px;
+      padding: 16px 14px 14px 0;
+      border-right: 1px solid var(--line);
+    }
+
+    .application-meta div:last-child {
+      border-right: 0;
+      padding-left: 14px;
+    }
+
+    .application-meta span {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .application-meta strong {
+      display: block;
+      font-size: 14px;
+      line-height: 1.3;
     }
 
     .note-card {
@@ -575,6 +610,21 @@
     }
 
     @media (max-width: 720px) {
+      .application-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .application-meta div,
+      .application-meta div:last-child {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+        padding-left: 0;
+      }
+
+      .application-meta div:last-child {
+        border-bottom: 0;
+      }
+
       .topbar {
         height: auto;
         min-height: 74px;
@@ -637,12 +687,12 @@
       <header class="topbar">
         <div class="name">
           <strong data-i18n="name">Imię Nazwisko</strong>
-          <span data-i18n="role">junior designer / visual systems</span>
+          <span data-i18n="role">junior designer / portfolio for applications</span>
         </div>
         <nav class="top-links" aria-label="Main navigation">
           <a href="#work" data-i18n="navWork">Prace</a>
           <a href="#about" data-i18n="navAbout">O mnie</a>
-          <a href="#contact" data-i18n="navContact">Kontakt</a>
+          <a href="#contact" data-i18n="navContact">CV / Kontakt</a>
         </nav>
       </header>
 
@@ -650,25 +700,39 @@
         <section class="hero" id="work">
           <div class="statement">
             <div>
-              <div class="eyebrow" data-i18n="eyebrow">Portfolio początkującej projektantki</div>
-              <h1 data-i18n="headline">Nie idealne case study. Raczej żywy indeks pracy, prób i decyzji.</h1>
+              <div class="eyebrow" data-i18n="eyebrow">Portfolio do aplikacji na stanowisko junior designer</div>
+              <h1 data-i18n="headline">Zbiór prac, który pokazuje sposób myślenia, warsztat i gotowość do rozwoju w zespole.</h1>
               <p class="lead" data-i18n="lead">
-                Projektuję identyfikacje, proste strony, układy i materiały do social mediów. To portfolio pokazuje wszystko: małe ćwiczenia, większe koncepcje i kierunek, w którym rozwijam swój język wizualny.
+                To portfolio jest dodatkiem do CV: pokazuje ćwiczenia, koncepcje i projekty edukacyjne, które najlepiej opisują mój poziom, sposób pracy z kompozycją, typografią, strukturą informacji i estetyką produktu.
               </p>
+              <div class="application-meta">
+                <div>
+                  <span data-i18n="metaRoleLabel">Rola</span>
+                  <strong data-i18n="metaRoleValue">Junior UI / Visual Designer</strong>
+                </div>
+                <div>
+                  <span data-i18n="metaToolsLabel">Narzędzia</span>
+                  <strong data-i18n="metaToolsValue">Figma, Adobe, HTML/CSS basics</strong>
+                </div>
+                <div>
+                  <span data-i18n="metaFormatLabel">Szukam</span>
+                  <strong data-i18n="metaFormatValue">stażu lub junior position</strong>
+                </div>
+              </div>
             </div>
             <div class="note-card">
-              <strong data-i18n="noteTitle">Bez przewijania do projektów.</strong>
-              <span data-i18n="noteText"> Wybierz pracę z indeksu po prawej — podgląd i opis zmienią się od razu.</span>
+              <strong data-i18n="noteTitle">Szybki przegląd dla rekrutacji.</strong>
+              <span data-i18n="noteText"> Wybierz pracę z indeksu po prawej, żeby szybko zobaczyć zakres, typ zadania i decyzje projektowe.</span>
             </div>
           </div>
 
           <div class="work-stage">
             <aside class="work-index">
               <div>
-                <div class="index-title" data-i18n="indexTitle">Index prac</div>
+                <div class="index-title" data-i18n="indexTitle">Prace do oceny</div>
                 <div class="project-list" id="projectList"></div>
               </div>
-              <div class="index-footer" data-i18n="indexFooter">Kliknij tytuł, żeby przełączyć projekt bez opuszczania pierwszego ekranu.</div>
+              <div class="index-footer" data-i18n="indexFooter">Układ pozwala szybko porównać zakres prac bez długiego przewijania.</div>
             </aside>
 
             <article class="preview" aria-live="polite">
@@ -689,33 +753,33 @@
 
         <section class="below" id="about">
           <div class="panel">
-            <div class="eyebrow" data-i18n="aboutEyebrow">O podejściu</div>
-            <h2 data-i18n="aboutTitle">Na początku drogi liczy się nie udawanie doświadczenia, tylko dobry sposób patrzenia.</h2>
+            <div class="eyebrow" data-i18n="aboutEyebrow">Profil</div>
+            <h2 data-i18n="aboutTitle">Szukam miejsca, w którym mogę rosnąć jako junior designer i pracować blisko zespołu.</h2>
             <p data-i18n="aboutText">
-              Dlatego zamiast robić stronę z trzema „najlepszymi” projektami, pokazuję cały zbiór prac. Widać w nim próby, rytm, typografię, decyzje kompozycyjne i to, jak myślę o wizualnej stronie projektu.
+              Interesuje mnie projektowanie stron, interfejsów i spójnych systemów wizualnych. W pracy stawiam na porządek, czytelną strukturę, uważność na detale i otwartość na feedback. To portfolio pokazuje aktualny poziom i kierunek mojego rozwoju.
             </p>
           </div>
 
           <div class="panel">
-            <div class="eyebrow" data-i18n="skillsEyebrow">Zakres</div>
-            <h2 data-i18n="skillsTitle">Co mogę zrobić</h2>
+            <div class="eyebrow" data-i18n="skillsEyebrow">Kompetencje</div>
+            <h2 data-i18n="skillsTitle">Obszary, które rozwijam</h2>
             <ul class="service-list">
-              <li><span>01</span><span><strong data-i18n="skill1Title">Layouty i strony</strong><br><span data-i18n="skill1Text">proste landing page, portfolio, strony usługowe, układy mobilne</span></span></li>
-              <li><span>02</span><span><strong data-i18n="skill2Title">Identyfikacje wizualne</strong><br><span data-i18n="skill2Text">logo, palety, typografia, moodboardy, podstawowe systemy</span></span></li>
-              <li><span>03</span><span><strong data-i18n="skill3Title">Materiały digital</strong><br><span data-i18n="skill3Text">posty, karuzele, plakaty, prezentacje i okładki</span></span></li>
+              <li><span>01</span><span><strong data-i18n="skill1Title">UI i layout</strong><br><span data-i18n="skill1Text">struktura ekranów, siatki, hierarchia, responsywne układy</span></span></li>
+              <li><span>02</span><span><strong data-i18n="skill2Title">Visual design</strong><br><span data-i18n="skill2Text">typografia, kolor, kompozycja, spójność systemu wizualnego</span></span></li>
+              <li><span>03</span><span><strong data-i18n="skill3Title">Proces i dokumentacja</strong><br><span data-i18n="skill3Text">research, referencje, opis decyzji, przygotowanie plików do przekazania</span></span></li>
             </ul>
           </div>
         </section>
 
         <section class="contact-card" id="contact">
           <div>
-            <div class="eyebrow" data-i18n="contactEyebrow">Kontakt</div>
-            <h2 data-i18n="contactTitle">Masz mały projekt, staż albo zadanie na start?</h2>
+            <div class="eyebrow" data-i18n="contactEyebrow">CV / Kontakt</div>
+            <h2 data-i18n="contactTitle">Portfolio przygotowane jako uzupełnienie CV i rozmowy rekrutacyjnej.</h2>
           </div>
           <div class="contact-row">
             <a href="mailto:hello@example.com"><span>Email</span>hello@example.com</a>
-            <a href="https://t.me/username"><span>Telegram</span>@username</a>
-            <a href="https://behance.net/username"><span>Behance</span>/username</a>
+            <a href="cv.pdf"><span>CV</span>download PDF</a>
+            <a href="https://linkedin.com/in/username"><span>LinkedIn</span>/in/username</a>
           </div>
         </section>
       </main>
@@ -731,61 +795,73 @@
     const dictionary = {
       pl: {
         name: 'Imię Nazwisko',
-        role: 'junior designer / visual systems',
+        role: 'junior designer / portfolio do aplikacji',
         navWork: 'Prace',
-        navAbout: 'O mnie',
-        navContact: 'Kontakt',
-        eyebrow: 'Portfolio początkującej projektantki',
-        headline: 'Nie idealne case study. Raczej żywy indeks pracy, prób i decyzji.',
-        lead: 'Projektuję identyfikacje, proste strony, układy i materiały do social mediów. To portfolio pokazuje wszystko: małe ćwiczenia, większe koncepcje i kierunek, w którym rozwijam swój język wizualny.',
-        noteTitle: 'Bez przewijania do projektów.',
-        noteText: ' Wybierz pracę z indeksu po prawej — podgląd i opis zmienią się od razu.',
-        indexTitle: 'Index prac',
-        indexFooter: 'Kliknij tytuł, żeby przełączyć projekt bez opuszczania pierwszego ekranu.',
-        aboutEyebrow: 'O podejściu',
-        aboutTitle: 'Na początku drogi liczy się nie udawanie doświadczenia, tylko dobry sposób patrzenia.',
-        aboutText: 'Dlatego zamiast robić stronę z trzema „najlepszymi” projektami, pokazuję cały zbiór prac. Widać w nim próby, rytm, typografię, decyzje kompozycyjne i to, jak myślę o wizualnej stronie projektu.',
-        skillsEyebrow: 'Zakres',
-        skillsTitle: 'Co mogę zrobić',
-        skill1Title: 'Layouty i strony',
-        skill1Text: 'proste landing page, portfolio, strony usługowe, układy mobilne',
-        skill2Title: 'Identyfikacje wizualne',
-        skill2Text: 'logo, palety, typografia, moodboardy, podstawowe systemy',
-        skill3Title: 'Materiały digital',
-        skill3Text: 'posty, karuzele, plakaty, prezentacje i okładki',
-        contactEyebrow: 'Kontakt',
-        contactTitle: 'Masz mały projekt, staż albo zadanie na start?',
+        navAbout: 'Profil',
+        navContact: 'CV / Kontakt',
+        eyebrow: 'Portfolio do aplikacji na stanowisko junior designer',
+        headline: 'Zbiór prac, który pokazuje sposób myślenia, warsztat i gotowość do rozwoju w zespole.',
+        lead: 'To portfolio jest dodatkiem do CV: pokazuje ćwiczenia, koncepcje i projekty edukacyjne, które najlepiej opisują mój poziom, sposób pracy z kompozycją, typografią, strukturą informacji i estetyką produktu.',
+        noteTitle: 'Szybki przegląd dla rekrutacji.',
+        noteText: ' Wybierz pracę z indeksu po prawej, żeby szybko zobaczyć zakres, typ zadania i decyzje projektowe.',
+        indexTitle: 'Prace do oceny',
+        indexFooter: 'Układ pozwala szybko porównać zakres prac bez długiego przewijania.',
+        aboutEyebrow: 'Profil',
+        aboutTitle: 'Szukam miejsca, w którym mogę rosnąć jako junior designer i pracować blisko zespołu.',
+        aboutText: 'Interesuje mnie projektowanie stron, interfejsów i spójnych systemów wizualnych. W pracy stawiam na porządek, czytelną strukturę, uważność na detale i otwartość na feedback. To portfolio pokazuje aktualny poziom i kierunek mojego rozwoju.',
+        skillsEyebrow: 'Kompetencje',
+        skillsTitle: 'Obszary, które rozwijam',
+        skill1Title: 'UI i layout',
+        skill1Text: 'struktura ekranów, siatki, hierarchia, responsywne układy',
+        skill2Title: 'Visual design',
+        skill2Text: 'typografia, kolor, kompozycja, spójność systemu wizualnego',
+        skill3Title: 'Proces i dokumentacja',
+        skill3Text: 'research, referencje, opis decyzji, przygotowanie plików do przekazania',
+        contactEyebrow: 'CV / Kontakt',
+        contactTitle: 'Portfolio przygotowane jako uzupełnienie CV i rozmowy rekrutacyjnej.',
         footerLeft: '© 2026 Imię Nazwisko',
-        footerRight: 'Junior designer · portfolio index'
+        metaRoleLabel: 'Rola',
+        metaRoleValue: 'Junior UI / Visual Designer',
+        metaToolsLabel: 'Narzędzia',
+        metaToolsValue: 'Figma, Adobe, HTML/CSS basics',
+        metaFormatLabel: 'Szukam',
+        metaFormatValue: 'stażu lub junior position',
+        metaRoleLabel: 'Target role',
+        metaRoleValue: 'Junior UI / Visual Designer',
+        metaToolsLabel: 'Tools',
+        metaToolsValue: 'Figma, Adobe, HTML/CSS basics',
+        metaFormatLabel: 'Looking for',
+        metaFormatValue: 'internship or junior position',
+        footerRight: 'Junior designer · CV portfolio'
       },
       en: {
         name: 'Name Surname',
-        role: 'junior designer / visual systems',
+        role: 'junior designer / portfolio for applications',
         navWork: 'Work',
-        navAbout: 'About',
-        navContact: 'Contact',
-        eyebrow: 'Portfolio of a junior designer',
-        headline: 'Not a perfect case-study page. More like a living index of work, attempts and decisions.',
-        lead: 'I design identities, simple websites, layouts and social media materials. This portfolio shows the full range: small exercises, larger concepts and the direction in which my visual language is developing.',
-        noteTitle: 'No scrolling to projects.',
-        noteText: ' Choose a piece from the index on the right — the preview and description update instantly.',
-        indexTitle: 'Work index',
-        indexFooter: 'Click a title to switch projects without leaving the first screen.',
-        aboutEyebrow: 'Approach',
-        aboutTitle: 'At the beginning, it is not about pretending to have experience. It is about learning to look well.',
-        aboutText: 'Instead of building a page around three “best” projects, I show the whole body of work. You can see attempts, rhythm, typography, composition choices and the way I think visually.',
-        skillsEyebrow: 'Scope',
-        skillsTitle: 'What I can do',
-        skill1Title: 'Layouts and websites',
-        skill1Text: 'simple landing pages, portfolios, service websites, mobile layouts',
-        skill2Title: 'Visual identities',
-        skill2Text: 'logos, palettes, typography, moodboards, basic systems',
-        skill3Title: 'Digital materials',
-        skill3Text: 'posts, carousels, posters, presentations and covers',
-        contactEyebrow: 'Contact',
-        contactTitle: 'Have a small project, internship or starter task?',
+        navAbout: 'Profile',
+        navContact: 'CV / Contact',
+        eyebrow: 'Portfolio for junior designer applications',
+        headline: 'A body of work that shows thinking, craft and readiness to grow in a team.',
+        lead: 'This portfolio is an addition to my CV: it presents exercises, concepts and educational projects that best describe my current level, composition skills, typography, information structure and product aesthetics.',
+        noteTitle: 'Quick review for hiring teams.',
+        noteText: ' Choose a piece from the index on the right to quickly see the scope, task type and design decisions.',
+        indexTitle: 'Work for review',
+        indexFooter: 'This layout makes it easy to compare work without long scrolling.',
+        aboutEyebrow: 'Profile',
+        aboutTitle: 'I am looking for a place where I can grow as a junior designer and work close to a team.',
+        aboutText: 'I am interested in websites, interfaces and coherent visual systems. I value order, clear structure, attention to detail and openness to feedback. This portfolio shows my current level and direction of growth.',
+        skillsEyebrow: 'Competencies',
+        skillsTitle: 'Areas I am developing',
+        skill1Title: 'UI and layout',
+        skill1Text: 'screen structure, grids, hierarchy, responsive layouts',
+        skill2Title: 'Visual design',
+        skill2Text: 'typography, color, composition, visual system consistency',
+        skill3Title: 'Process and documentation',
+        skill3Text: 'research, references, explaining decisions, preparing files for handoff',
+        contactEyebrow: 'CV / Contact',
+        contactTitle: 'Portfolio prepared as a CV supplement and interview reference.',
         footerLeft: '© 2026 Name Surname',
-        footerRight: 'Junior designer · portfolio index'
+        footerRight: 'Junior designer · CV portfolio'
       }
     };
 
@@ -794,20 +870,20 @@
         {
           number: '01',
           short: 'Skin care',
-          title: 'Strona dla studia pielęgnacji',
+          title: 'Koncepcja strony dla studia pielęgnacji',
           type: 'Landing page',
           label: 'Studio skin care',
-          description: 'Spokojna koncepcja strony z usługami, rezerwacją i prostą strukturą informacji.',
+          description: 'Projekt edukacyjny skupiony na strukturze usług, czytelnej hierarchii i spokojnym kierunku wizualnym.'
           facts: ['Figma', 'desktop + mobile', 'visual direction'],
           color: '#d9c7a8'
         },
         {
           number: '02',
           short: 'Kawiarnia',
-          title: 'Identyfikacja dla małej kawiarni',
+          title: 'Koncepcja identyfikacji dla kawiarni',
           type: 'Brand identity',
           label: 'Coffee mark',
-          description: 'Znak, paleta, karta menu i kilka nośników dla kameralnego miejsca z własnym charakterem.',
+          description: 'Ćwiczenie z budowania podstawowego systemu: znak, paleta, karta menu i przykładowe zastosowania.'
           facts: ['logo', 'palette', 'menu cards'],
           color: '#aeb39f'
         },
@@ -876,20 +952,20 @@
         {
           number: '01',
           short: 'Skin care',
-          title: 'Website for a skin care studio',
+          title: 'Website concept for a skin care studio'
           type: 'Landing page',
           label: 'Skin care studio',
-          description: 'A calm website concept with services, booking and a simple information structure.',
+          description: 'An educational project focused on service structure, clear hierarchy and a calm visual direction.'
           facts: ['Figma', 'desktop + mobile', 'visual direction'],
           color: '#d9c7a8'
         },
         {
           number: '02',
           short: 'Coffee shop',
-          title: 'Identity for a small coffee shop',
+          title: 'Identity concept for a coffee shop'
           type: 'Brand identity',
           label: 'Coffee mark',
-          description: 'A mark, palette, menu cards and a few applications for a small place with its own character.',
+          description: 'An exercise in building a basic system: mark, palette, menu card and sample applications.'
           facts: ['logo', 'palette', 'menu cards'],
           color: '#aeb39f'
         },
