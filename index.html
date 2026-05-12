@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio — Selected Works</title>
+  <title>Portfolio — Lizaveta Hladziy</title>
   <style>
     :root {
       --paper: #f6f3ec;
@@ -16,6 +16,7 @@
       --blue: #61778f;
       --rose: #bd8b82;
       --shadow: 0 22px 60px rgba(25, 24, 21, 0.10);
+      --page-pad: clamp(20px, 4vw, 58px);
     }
 
     * {
@@ -68,50 +69,16 @@
       width: min(1440px, 100%);
       min-height: 100vh;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 84px minmax(0, 1fr);
       border-left: 1px solid var(--line);
       border-right: 1px solid var(--line);
       background: rgba(246, 243, 236, 0.78);
     }
 
-    .rail {
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      border-right: 1px solid var(--line);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      padding: 24px 0;
-      background: rgba(246, 243, 236, 0.9);
-      z-index: 10;
-    }
-
-    .mark {
-      width: 38px;
-      height: 38px;
-      border: 1px solid var(--ink);
-      display: grid;
-      place-items: center;
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 16px;
-      transform: rotate(-3deg);
-    }
-
-    .rail-word {
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      color: var(--muted);
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-    }
-
     .lang-switch {
-      display: grid;
+      display: flex;
       gap: 8px;
+      padding-left: 18px;
+      border-left: 1px solid var(--line);
     }
 
     .lang-btn {
@@ -137,10 +104,11 @@
     .topbar {
       height: 84px;
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 1fr auto auto;
+      gap: 22px;
       align-items: center;
       border-bottom: 1px solid var(--line);
-      padding: 0 clamp(20px, 4vw, 58px);
+      padding: 0 var(--page-pad);
       background: rgba(246, 243, 236, 0.78);
       backdrop-filter: blur(14px);
       position: sticky;
@@ -180,19 +148,23 @@
     }
 
     .hero {
-      min-height: calc(100vh - 84px);
+      min-height: auto;
       display: grid;
-      grid-template-columns: minmax(320px, 0.82fr) minmax(420px, 1.18fr);
       border-bottom: 1px solid var(--line);
     }
 
     .statement {
-      padding: clamp(28px, 5vw, 70px);
+      min-height: clamp(520px, 62vh, 760px);
+      padding: clamp(44px, 7vw, 92px) var(--page-pad);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      gap: 48px;
-      border-right: 1px solid var(--line);
+      justify-content: center;
+      gap: 42px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .statement > div {
+      max-width: 1060px;
     }
 
     .eyebrow {
@@ -203,12 +175,15 @@
     }
 
     h1 {
-      max-width: 720px;
+      max-width: 980px;
       margin-top: 26px;
       font-family: Georgia, 'Times New Roman', serif;
       font-weight: 500;
-      font-size: clamp(50px, 7vw, 110px);
-      line-height: 0.9;
+      font-size: clamp(50px, 7vw, 92px);
+      line-height: 0.94;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: auto;
     }
 
     .lead {
@@ -225,17 +200,17 @@
       grid-template-columns: repeat(3, 1fr);
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
+      text-align: center;
     }
 
     .small-meta div {
       min-height: 86px;
-      padding: 16px 14px 14px 0;
+      padding: 16px 14px 14px;
       border-right: 1px solid var(--line);
     }
 
     .small-meta div:last-child {
       border-right: 0;
-      padding-left: 14px;
     }
 
     .small-meta span {
@@ -253,25 +228,15 @@
       line-height: 1.3;
     }
 
-    .note-card {
-      max-width: 530px;
-      padding: 18px 0 0;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .note-card strong {
-      color: var(--ink);
-    }
-
     .work-stage {
       display: grid;
-      grid-template-columns: 285px minmax(0, 1fr);
-      min-height: calc(100vh - 84px);
+      grid-template-columns: minmax(280px, 330px) minmax(0, 1fr);
+      min-height: min(920px, calc(100vh - 84px));
+      min-width: 0;
     }
 
     .work-index {
+      min-width: 0;
       border-right: 1px solid var(--line);
       display: flex;
       flex-direction: column;
@@ -289,6 +254,8 @@
     }
 
     .category-tabs {
+      min-width: 0;
+      max-width: 100%;
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
@@ -358,24 +325,24 @@
       letter-spacing: 0.12em;
     }
 
-    .index-footer {
-      padding: 18px;
-      color: var(--muted);
-      font-size: 13px;
-      border-top: 1px solid var(--line);
-    }
-
     .preview {
-      padding: clamp(20px, 3vw, 42px);
+      min-width: 0;
+      padding: clamp(28px, 4vw, 58px) var(--page-pad);
       display: grid;
-      grid-template-rows: minmax(360px, 1fr) auto;
-      gap: 24px;
+      grid-template-rows: auto auto;
+      gap: 28px;
     }
 
     .preview-art {
       position: relative;
+      width: 100%;
+      min-width: 0;
       overflow: hidden;
-      min-height: 360px;
+      min-height: 0;
+      padding: clamp(28px, 4vw, 42px);
+      display: grid;
+      grid-template-rows: auto minmax(260px, 1fr) auto;
+      gap: clamp(22px, 4vw, 36px);
       background: #d9c7a8;
       box-shadow: inset 0 0 0 1px rgba(25, 24, 21, 0.12);
       transition: background 0.25s ease;
@@ -391,21 +358,10 @@
     }
 
     .preview-art::after {
-      content: attr(data-number);
-      position: absolute;
-      right: -0.09em;
-      bottom: -0.24em;
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: clamp(170px, 22vw, 330px);
-      line-height: 1;
-      color: rgba(25, 24, 21, 0.13);
-      z-index: 1;
+      display: none;
     }
 
     .art-label {
-      position: absolute;
-      top: 42px;
-      left: 42px;
       max-width: 280px;
       font-family: Georgia, 'Times New Roman', serif;
       font-size: clamp(32px, 4vw, 58px);
@@ -414,9 +370,8 @@
     }
 
     .art-chip {
-      position: absolute;
-      left: 42px;
-      bottom: 42px;
+      align-self: end;
+      justify-self: start;
       padding: 10px 12px;
       background: rgba(255, 250, 240, 0.72);
       border: 1px solid rgba(25, 24, 21, 0.18);
@@ -428,10 +383,129 @@
     }
 
     .visual-frame {
-      position: absolute;
-      inset: clamp(86px, 12vw, 132px) 42px 86px clamp(44px, 8vw, 96px);
+      position: relative;
+      min-height: 0;
       z-index: 2;
       pointer-events: none;
+    }
+
+    .visual-frame.is-gallery {
+      display: grid;
+      place-items: stretch;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: auto;
+      max-height: clamp(150px, 23vw, 260px);
+      aspect-ratio: 0.78;
+      object-fit: contain;
+      border: 1px solid rgba(25, 24, 21, 0.26);
+      background: rgba(255, 250, 240, 0.52);
+      pointer-events: auto;
+      cursor: zoom-in;
+    }
+
+    .visual-frame.is-showcase {
+      display: grid;
+      place-items: center;
+    }
+
+    .showcase-image {
+      width: 100%;
+      max-height: clamp(280px, 52vw, 620px);
+      object-fit: contain;
+      border: 1px solid rgba(25, 24, 21, 0.26);
+      background: rgba(255, 250, 240, 0.62);
+      pointer-events: auto;
+      cursor: zoom-in;
+    }
+
+    .video-preview {
+      width: 100%;
+      max-height: clamp(340px, 58vw, 680px);
+      aspect-ratio: 9 / 16;
+      object-fit: contain;
+      border: 1px solid rgba(25, 24, 21, 0.26);
+      background: #111;
+      pointer-events: auto;
+    }
+
+    .visual-frame.is-site-preview {
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid rgba(25, 24, 21, 0.26);
+      background: rgba(255, 250, 240, 0.62);
+    }
+
+    .site-preview-image {
+      width: 100%;
+      max-height: clamp(260px, 48vw, 560px);
+      object-fit: contain;
+      pointer-events: auto;
+      cursor: zoom-in;
+    }
+
+    .open-site-btn {
+      position: absolute;
+      right: clamp(28px, 4vw, 42px);
+      bottom: clamp(28px, 4vw, 42px);
+      min-height: 38px;
+      padding: 0 14px;
+      border: 1px solid rgba(25, 24, 21, 0.18);
+      background: rgba(255, 250, 240, 0.82);
+      color: var(--ink);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      z-index: 5;
+      display: none;
+    }
+
+    .preview-art.has-url .open-site-btn {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      padding: clamp(18px, 4vw, 48px);
+      display: none;
+      place-items: center;
+      background: rgba(25, 24, 21, 0.78);
+      z-index: 100;
+    }
+
+    .lightbox.is-open {
+      display: grid;
+    }
+
+    .lightbox img {
+      max-width: min(1200px, calc(100vw - 36px));
+      max-height: 88vh;
+      object-fit: contain;
+      background: var(--milk);
+      box-shadow: var(--shadow);
+    }
+
+    .lightbox button {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255, 250, 240, 0.4);
+      background: rgba(255, 250, 240, 0.9);
+      font-size: 22px;
     }
 
     .visual-frame.is-web {
@@ -645,21 +719,25 @@
 
     .preview-meta {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
+      grid-template-columns: minmax(260px, 0.95fr) minmax(320px, 1.05fr);
+      gap: clamp(28px, 5vw, 72px);
       align-items: start;
+      min-width: 0;
     }
 
     .preview-meta h2 {
       font-family: Georgia, 'Times New Roman', serif;
       font-weight: 500;
-      font-size: clamp(34px, 4vw, 62px);
-      line-height: 0.96;
+      font-size: clamp(34px, 4vw, 58px);
+      line-height: 0.98;
+      overflow-wrap: anywhere;
     }
 
     .preview-copy {
       color: var(--muted);
       font-size: 16px;
+      min-width: 0;
+      overflow-wrap: anywhere;
     }
 
     .category-kicker {
@@ -696,7 +774,7 @@
 
     .panel {
       min-height: 360px;
-      padding: clamp(28px, 5vw, 64px);
+      padding: clamp(28px, 5vw, 64px) var(--page-pad);
       border-right: 1px solid var(--line);
     }
 
@@ -744,13 +822,13 @@
     }
 
     .contact-card {
-      min-height: 360px;
+      min-height: 410px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       background: var(--ink);
       color: var(--milk);
-      padding: clamp(28px, 5vw, 64px);
+      padding: clamp(28px, 5vw, 64px) var(--page-pad);
     }
 
     .contact-card h2 {
@@ -761,20 +839,25 @@
 
     .contact-row {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: minmax(260px, 1.05fr) minmax(220px, 0.85fr) minmax(300px, 1.1fr);
       border-top: 1px solid rgba(255, 250, 240, 0.22);
     }
 
     .contact-row a {
-      padding: 18px 20px 18px 0;
+      min-height: 82px;
+      padding: 18px 28px 18px 0;
       border-right: 1px solid rgba(255, 250, 240, 0.22);
       color: rgba(255, 250, 240, 0.72);
       transition: color 0.2s ease;
     }
 
+    .contact-row a:nth-child(2) {
+      padding-left: 28px;
+    }
+
     .contact-row a:last-child {
       border-right: 0;
-      padding-left: 20px;
+      padding-left: 28px;
     }
 
     .contact-row a:hover {
@@ -794,51 +877,29 @@
       display: flex;
       justify-content: space-between;
       gap: 20px;
-      padding: 24px clamp(20px, 4vw, 58px);
+      padding: 24px var(--page-pad);
       color: var(--muted);
       font-size: 13px;
     }
 
+    @media (max-width: 1280px) {
+      h1 {
+        max-width: 900px;
+      }
+    }
+
     @media (max-width: 1080px) {
-      .shell {
-        grid-template-columns: 1fr;
-      }
-
-      .rail {
-        position: fixed;
-        right: 14px;
-        bottom: 14px;
-        top: auto;
-        width: auto;
-        height: auto;
-        padding: 8px;
-        border: 1px solid var(--line);
-        flex-direction: row;
-        gap: 12px;
-        box-shadow: var(--shadow);
-      }
-
-      .rail-word {
-        display: none;
-      }
-
-      .lang-switch {
-        display: flex;
-      }
-
-      .hero,
       .below {
         grid-template-columns: 1fr;
-      }
-
-      .statement {
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
       }
 
       .work-stage {
         min-height: auto;
         grid-template-columns: 1fr;
+      }
+
+      .work-stage > * {
+        min-width: 0;
       }
 
       .work-index {
@@ -854,10 +915,6 @@
         min-height: 118px;
       }
 
-      .index-footer {
-        display: none;
-      }
-
       .panel {
         border-right: 0;
         border-bottom: 1px solid var(--line);
@@ -868,7 +925,7 @@
       .topbar {
         height: auto;
         min-height: 74px;
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr auto;
         gap: 12px;
         padding-top: 16px;
         padding-bottom: 16px;
@@ -876,6 +933,11 @@
 
       .top-links {
         display: none;
+      }
+
+      .lang-switch {
+        padding-left: 0;
+        border-left: 0;
       }
 
       .hero {
@@ -915,11 +977,7 @@
       }
 
       .preview-art {
-        min-height: 380px;
-      }
-
-      .visual-frame {
-        inset: 110px 28px 86px 28px;
+        grid-template-rows: auto minmax(220px, auto) auto;
       }
 
       .visual-frame.is-identity,
@@ -947,6 +1005,10 @@
         padding-left: 0;
       }
 
+      .contact-row a:nth-child(2) {
+        padding-left: 0;
+      }
+
       footer {
         flex-direction: column;
       }
@@ -962,32 +1024,21 @@
       }
 
       .art-label {
-        left: 28px;
-        top: 32px;
+        max-width: 220px;
       }
 
-      .art-chip {
-        left: 28px;
-        bottom: 32px;
+      .gallery-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
   <div class="shell">
-    <aside class="rail" aria-label="Language switch">
-      <a class="mark" href="#" aria-label="Home">IF</a>
-      <div class="rail-word">selected works</div>
-      <div class="lang-switch">
-        <button class="lang-btn is-active" type="button" data-lang="pl">PL</button>
-        <button class="lang-btn" type="button" data-lang="en">EN</button>
-      </div>
-    </aside>
-
     <div class="page">
       <header class="topbar">
         <div class="name">
-          <strong data-i18n="name">Imię Nazwisko</strong>
+          <strong data-i18n="name">Lizaveta Hladziy</strong>
           <span data-i18n="role">visual design / ui / layout</span>
         </div>
         <nav class="top-links" aria-label="Main navigation">
@@ -995,13 +1046,16 @@
           <a href="#about" data-i18n="navAbout">Info</a>
           <a href="#contact" data-i18n="navContact">Kontakt</a>
         </nav>
+        <div class="lang-switch" aria-label="Language switch">
+          <button class="lang-btn is-active" type="button" data-lang="pl">PL</button>
+          <button class="lang-btn" type="button" data-lang="en">EN</button>
+        </div>
       </header>
 
       <main>
         <section class="hero" id="work">
           <div class="statement">
             <div>
-              <div class="eyebrow" data-i18n="eyebrow">Selected works</div>
               <h1 data-i18n="headline">Portfolio podzielone na web design, identyfikacje i layouty.</h1>
               <p class="lead" data-i18n="lead">
                 Zbiór projektów koncepcyjnych, ćwiczeń i realizacji wizualnych. Kategorie pomagają szybko przejść między stronami, znakami, layoutami i opakowaniami.
@@ -1017,13 +1071,9 @@
                 </div>
                 <div>
                   <span data-i18n="metaThreeLabel">Archive</span>
-                  <strong data-i18n="metaThreeValue">2025—2026</strong>
+                  <strong data-i18n="metaThreeValue">2024—2026</strong>
                 </div>
               </div>
-            </div>
-            <div class="note-card">
-              <strong data-i18n="noteTitle">Wybierz kategorię.</strong>
-              <span data-i18n="noteText"> Lista i podgląd pokażą prace z wybranego obszaru.</span>
             </div>
           </div>
 
@@ -1034,7 +1084,6 @@
                 <div class="category-tabs" id="categoryTabs" aria-label="Project categories"></div>
                 <div class="project-list" id="projectList"></div>
               </div>
-              <div class="index-footer" data-i18n="indexFooter">Kategorie porządkują portfolio według rodzaju pracy.</div>
             </aside>
 
             <article class="preview" aria-live="polite">
@@ -1042,6 +1091,7 @@
                 <div class="art-label" id="artLabel">Studio skin care</div>
                 <div class="visual-frame is-web" id="visualFrame"></div>
                 <div class="art-chip" id="artChip">Landing page</div>
+                <button class="open-site-btn" id="openSiteBtn" type="button">Open site</button>
               </div>
               <div class="preview-meta">
                 <h2 id="projectTitle">Koncepcja strony dla studia pielęgnacji</h2>
@@ -1081,31 +1131,35 @@
             <h2 data-i18n="contactTitle">Dodatkowe materiały i kontakt.</h2>
           </div>
           <div class="contact-row">
-            <a href="mailto:hello@example.com"><span>Email</span>hello@example.com</a>
+            <a href="mailto:lizavetahladziy@gmail.com"><span>Email</span>lizavetahladziy@gmail.com</a>
             <a href="cv.pdf"><span>CV</span>download PDF</a>
-            <a href="https://linkedin.com/in/username"><span>LinkedIn</span>/in/username</a>
+            <a href="https://www.linkedin.com/in/lizaveta-hladziy-44b348405/"><span>LinkedIn</span>/in/lizaveta-hladziy-44b348405</a>
           </div>
         </section>
       </main>
 
       <footer>
-        <span data-i18n="footerLeft">© 2026 Imię Nazwisko</span>
-        <span data-i18n="footerRight">Selected works · portfolio</span>
+        <span data-i18n="footerLeft">© 2026 Lizaveta Hladziy</span>
+        <span data-i18n="footerRight">Portfolio</span>
       </footer>
     </div>
   </div>
 
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button type="button" id="lightboxClose" aria-label="Close image">×</button>
+    <img id="lightboxImage" src="" alt="" />
+  </div>
+
   <script>
-    const categoryOrder = ['all', 'web', 'identity', 'editorial', 'packaging'];
+    const categoryOrder = ['all', 'web', 'identity', 'editorial', 'packaging', 'edits'];
 
     const dictionary = {
       pl: {
-        name: 'Imię Nazwisko',
+        name: 'Lizaveta Hladziy',
         role: 'visual design / ui / layout',
         navWork: 'Prace',
         navAbout: 'Info',
         navContact: 'Kontakt',
-        eyebrow: 'Selected works',
         headline: 'Portfolio podzielone na web design, identyfikacje i layouty.',
         lead: 'Zbiór projektów koncepcyjnych, ćwiczeń i realizacji wizualnych. Kategorie pomagają szybko przejść między stronami, znakami, layoutami i opakowaniami.',
         metaOneLabel: 'Focus',
@@ -1113,11 +1167,8 @@
         metaTwoLabel: 'Tools',
         metaTwoValue: 'Figma, Adobe, HTML/CSS',
         metaThreeLabel: 'Archive',
-        metaThreeValue: '2025—2026',
-        noteTitle: 'Wybierz kategorię.',
-        noteText: ' Lista i podgląd pokażą prace z wybranego obszaru.',
+        metaThreeValue: '2024—2026',
         indexTitle: 'Index prac',
-        indexFooter: 'Kategorie porządkują portfolio według rodzaju pracy.',
         aboutEyebrow: 'Info',
         aboutTitle: 'Proste układy, spokojna typografia i czytelna struktura.',
         aboutText: 'Pracuję nad projektami wizualnymi, które łączą estetykę z porządkiem. Interesuje mnie design, który nie potrzebuje nadmiaru efektów, żeby wyglądać pewnie.',
@@ -1131,23 +1182,23 @@
         detail3Text: 'plakaty, karuzele, prezentacje, layouty',
         contactEyebrow: 'Kontakt',
         contactTitle: 'Dodatkowe materiały i kontakt.',
-        footerLeft: '© 2026 Imię Nazwisko',
-        footerRight: 'Selected works · portfolio',
+        footerLeft: '© 2026 Lizaveta Hladziy',
+        footerRight: 'Portfolio',
         categories: {
           all: 'Wszystko',
           web: 'Web design',
           identity: 'Logotypy',
           editorial: 'Editorial',
-          packaging: 'Packaging'
+          packaging: 'Packaging',
+          edits: 'Edits'
         }
       },
       en: {
-        name: 'Name Surname',
+        name: 'Lizaveta Hladziy',
         role: 'visual design / ui / layout',
         navWork: 'Work',
         navAbout: 'Info',
         navContact: 'Contact',
-        eyebrow: 'Selected works',
         headline: 'A portfolio split into web design, identities and layouts.',
         lead: 'A collection of concepts, exercises and visual projects. Categories make it easy to move between websites, marks, layouts and packaging.',
         metaOneLabel: 'Focus',
@@ -1155,11 +1206,8 @@
         metaTwoLabel: 'Tools',
         metaTwoValue: 'Figma, Adobe, HTML/CSS',
         metaThreeLabel: 'Archive',
-        metaThreeValue: '2025—2026',
-        noteTitle: 'Choose a category.',
-        noteText: ' The list and preview will show work from the selected area.',
+        metaThreeValue: '2024—2026',
         indexTitle: 'Work index',
-        indexFooter: 'Categories organize the portfolio by type of work.',
         aboutEyebrow: 'Info',
         aboutTitle: 'Simple layouts, calm typography and clear structure.',
         aboutText: 'I work on visual projects that combine aesthetics with order. I am interested in design that does not need excessive effects to feel confident.',
@@ -1173,14 +1221,15 @@
         detail3Text: 'posters, carousels, presentations, layouts',
         contactEyebrow: 'Contact',
         contactTitle: 'Additional materials and contact.',
-        footerLeft: '© 2026 Name Surname',
-        footerRight: 'Selected works · portfolio',
+        footerLeft: '© 2026 Lizaveta Hladziy',
+        footerRight: 'Portfolio',
         categories: {
           all: 'All',
           web: 'Web design',
           identity: 'Logos',
           editorial: 'Editorial',
-          packaging: 'Packaging'
+          packaging: 'Packaging',
+          edits: 'Edits'
         }
       }
     };
@@ -1189,30 +1238,33 @@
       {
         number: '01',
         category: 'web',
-        short: { pl: 'Skin care', en: 'Skin care' },
-        title: { pl: 'Koncepcja strony dla studia pielęgnacji', en: 'Website concept for a skin care studio' },
-        type: { pl: 'Landing page', en: 'Landing page' },
-        label: { pl: 'Studio skin care', en: 'Skin care studio' },
+        short: { pl: 'Sklep', en: 'Store' },
+        title: { pl: 'Strona zakupowa sklepu internetowego', en: 'Web store purchase page' },
+        type: { pl: 'E-commerce', en: 'E-commerce' },
+        label: { pl: 'Web store', en: 'Web store' },
         description: {
-          pl: 'Projekt edukacyjny skupiony na strukturze usług, czytelnej hierarchii i spokojnym kierunku wizualnym.',
-          en: 'An educational project focused on service structure, clear hierarchy and a calm visual direction.'
+          pl: 'Widok zakupowy z naciskiem na hierarchię, czytelność i ścieżkę do finalizacji zamówienia.',
+          en: 'A purchase flow view focused on hierarchy, clarity and checkout readiness.'
         },
-        facts: { pl: ['Figma', 'desktop + mobile', 'visual direction'], en: ['Figma', 'desktop + mobile', 'visual direction'] },
-        color: '#d9c7a8'
+        facts: { pl: ['HTML/CSS', 'desktop layout', 'e-commerce'], en: ['HTML/CSS', 'desktop layout', 'e-commerce'] },
+        color: '#d9c7a8',
+        previewImage: 'camerasite.png'
       },
       {
         number: '02',
-        category: 'identity',
-        short: { pl: 'Kawiarnia', en: 'Coffee shop' },
-        title: { pl: 'Koncepcja identyfikacji dla kawiarni', en: 'Identity concept for a coffee shop' },
-        type: { pl: 'Brand identity', en: 'Brand identity' },
-        label: { pl: 'Coffee mark', en: 'Coffee mark' },
+        category: 'web',
+        short: { pl: 'Chota', en: 'Chota' },
+        title: { pl: 'Platforma AI-agentów dla biznesu', en: 'AI agent platform for business' },
+        type: { pl: 'SaaS / AI', en: 'SaaS / AI' },
+        label: { pl: 'Chota', en: 'Chota' },
         description: {
-          pl: 'Ćwiczenie z budowania podstawowego systemu: znak, paleta, karta menu i przykładowe zastosowania.',
-          en: 'An exercise in building a basic system: mark, palette, menu card and sample applications.'
+          pl: 'Strona produktu Chota: AI-agenci dla wiadomości, zgłoszeń, zapisów i przekazywania danych do CRM.',
+          en: 'A product page for Chota: AI agents for messages, leads, booking support and CRM handoff.'
         },
-        facts: { pl: ['logo', 'palette', 'menu cards'], en: ['logo', 'palette', 'menu cards'] },
-        color: '#aeb39f'
+        facts: { pl: ['SaaS', 'AI agents', 'web design'], en: ['SaaS', 'AI agents', 'web design'] },
+        color: '#aeb39f',
+        image: 'chotamainpage.jpg',
+        url: 'https://chota.by/'
       },
       {
         number: '03',
@@ -1226,21 +1278,23 @@
           en: 'Carousel, quote and cover templates focused on rhythm, consistency and working with text.'
         },
         facts: { pl: ['templates', 'typography', 'content system'], en: ['templates', 'typography', 'content system'] },
-        color: '#c9b8a6'
+        color: '#c9b8a6',
+        gallery: ['ig1.jpg', 'ig2.jpg', 'ig3.jpg', 'ig4.jpg']
       },
       {
         number: '04',
         category: 'web',
-        short: { pl: 'Aplikacja', en: 'App' },
-        title: { pl: 'Koncept aplikacji do nawyków', en: 'Habit app concept' },
-        type: { pl: 'UI concept', en: 'UI concept' },
-        label: { pl: 'Habit app', en: 'Habit app' },
+        short: { pl: 'Restauracja', en: 'Restaurant' },
+        title: { pl: 'Strona restauracji', en: 'Restaurant website page' },
+        type: { pl: 'Landing page', en: 'Landing page' },
+        label: { pl: 'Restaurant page', en: 'Restaurant page' },
         description: {
-          pl: 'Kilka ekranów aplikacji: onboarding, widok dnia, proste komponenty i układ mobilny.',
-          en: 'A small set of screens: onboarding, daily view, simple components and a mobile layout.'
+          pl: 'Strona dla restauracji z menu, wyróżnikami i czytelną strukturą sekcji.',
+          en: 'A restaurant page with menu highlights and a clear section structure.'
         },
-        facts: { pl: ['mobile UI', 'onboarding', 'components'], en: ['mobile UI', 'onboarding', 'components'] },
-        color: '#b8c0bd'
+        facts: { pl: ['HTML/CSS', 'layout', 'landing'], en: ['HTML/CSS', 'layout', 'landing'] },
+        color: '#b8c0bd',
+        previewImage: 'purrhome.png'
       },
       {
         number: '05',
@@ -1254,38 +1308,26 @@
           en: 'An exercise in large typography, hierarchy and the tension between text and negative space.'
         },
         facts: { pl: ['print', 'composition', 'type'], en: ['print', 'composition', 'type'] },
-        color: '#c89472'
+        color: '#c89472',
+        gallery: ['graphicsposter.jpg', 'graphics.jpg']
       },
       {
         number: '06',
-        category: 'web',
-        short: { pl: 'Personal', en: 'Personal' },
-        title: { pl: 'Koncepcja strony osobistej', en: 'Personal website concept' },
-        type: { pl: 'Website concept', en: 'Website concept' },
-        label: { pl: 'Personal site', en: 'Personal site' },
+        category: 'packaging',
+        short: { pl: 'Kawa', en: 'Coffee' },
+        title: { pl: 'Opakowania dla kawy', en: 'Coffee packaging design' },
+        type: { pl: 'Packaging', en: 'Packaging' },
+        label: { pl: 'Coffee pack', en: 'Coffee pack' },
         description: {
-          pl: 'Układ strony z sekcją intro, pracami, krótkim opisem i prostym ekranem kontaktowym.',
-          en: 'A page layout with an intro, work section, short description and a simple contact screen.'
+          pl: 'Seria opakowań i kart produktowych dla kawy, z ilustracjami i spokojną kompozycją.',
+          en: 'A coffee packaging series with illustrated packs, product cards and a calm layout system.'
         },
-        facts: { pl: ['website', 'copy structure', 'layout'], en: ['website', 'copy structure', 'layout'] },
-        color: '#8f9a8a'
+        facts: { pl: ['coffee', 'packaging', 'product cards'], en: ['coffee', 'packaging', 'product cards'] },
+        color: '#d6cfc1',
+        gallery: ['packagedesign.jpg', 'packagedesign2.jpg', 'packagedesign3.jpg', 'packagedesign4.jpg']
       },
       {
         number: '07',
-        category: 'packaging',
-        short: { pl: 'Świece', en: 'Candles' },
-        title: { pl: 'Etykiety dla świec sojowych', en: 'Labels for soy candles' },
-        type: { pl: 'Packaging', en: 'Packaging' },
-        label: { pl: 'Candle label', en: 'Candle label' },
-        description: {
-          pl: 'Delikatny system etykiet i kart produktowych dla niewielkiej serii zapachów.',
-          en: 'A delicate label and product-card system for a small fragrance series.'
-        },
-        facts: { pl: ['packaging', 'labels', 'product card'], en: ['packaging', 'labels', 'product card'] },
-        color: '#d6cfc1'
-      },
-      {
-        number: '08',
         category: 'editorial',
         short: { pl: 'Magazyn', en: 'Magazine' },
         title: { pl: 'Rozkładówka magazynu', en: 'Magazine spread' },
@@ -1296,7 +1338,39 @@
           en: 'Practice with grids, column rhythm, captions and balance between image and text.'
         },
         facts: { pl: ['grid', 'editorial', 'layout'], en: ['grid', 'editorial', 'layout'] },
-        color: '#a7a094'
+        color: '#a7a094',
+        gallery: ['animayo.jpg', 'animayo2.jpg', 'animayo3.jpg']
+      },
+      {
+        number: '08',
+        category: 'identity',
+        short: { pl: 'Logotypy', en: 'Logos' },
+        title: { pl: 'Zestaw znaków i logotypów', en: 'Logo and mark collection' },
+        type: { pl: 'Brand identity', en: 'Brand identity' },
+        label: { pl: 'Logo set', en: 'Logo set' },
+        description: {
+          pl: 'Osobny zestaw znaków, szkiców brandingowych i prostych aplikacji wizualnych.',
+          en: 'A separate set of marks, branding sketches and simple visual applications.'
+        },
+        facts: { pl: ['logos', 'marks', 'identity'], en: ['logos', 'marks', 'identity'] },
+        color: '#c7b7a3',
+        gallery: ['chotalogo.jpg', 'chotalogo2.jpg', 'logoviva.jpg']
+      },
+      {
+        number: '09',
+        category: 'edits',
+        short: { pl: 'Forestrock', en: 'Forestrock' },
+        title: { pl: 'Edit video dla forestrock.tv', en: 'Video edit for forestrock.tv' },
+        type: { pl: 'Video edit', en: 'Video edit' },
+        label: { pl: 'Forestrock.tv', en: 'Forestrock.tv' },
+        description: {
+          pl: 'Krótki montaż wideo przygotowany jako praca edytorska dla forestrock.tv.',
+          en: 'A short video edit prepared as editing work for forestrock.tv.'
+        },
+        facts: { pl: ['MP4', 'editing', 'forestrock.tv'], en: ['MP4', 'editing', 'forestrock.tv'] },
+        color: '#b7b0a5',
+        video: 'edit.MP4',
+        url: 'https://forestrock.tv/'
       }
     ];
 
@@ -1310,10 +1384,14 @@
     const visualFrame = document.getElementById('visualFrame');
     const artLabel = document.getElementById('artLabel');
     const artChip = document.getElementById('artChip');
+    const openSiteBtn = document.getElementById('openSiteBtn');
     const projectTitle = document.getElementById('projectTitle');
     const projectDescription = document.getElementById('projectDescription');
     const categoryKicker = document.getElementById('categoryKicker');
     const facts = document.getElementById('facts');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxClose = document.getElementById('lightboxClose');
 
     function localize(value) {
       return typeof value === 'string' ? value : value[currentLang];
@@ -1343,7 +1421,8 @@
         button.setAttribute('aria-pressed', category === currentCategory ? 'true' : 'false');
         button.addEventListener('click', () => {
           currentCategory = category;
-          currentProject = getVisibleProjects()[0].index;
+          const visibleProjects = getVisibleProjects();
+          currentProject = visibleProjects.length ? visibleProjects[0].index : 0;
           renderCategoryTabs();
           renderProjectButtons();
           renderProject();
@@ -1372,6 +1451,34 @@
     }
 
     function renderVisual(project) {
+      if (project.previewImage) {
+        visualFrame.className = 'visual-frame is-site-preview';
+        visualFrame.innerHTML = `<img class="site-preview-image" src="${project.previewImage}" data-full="${project.previewImage}" alt="" loading="lazy" />`;
+        return;
+      }
+
+      if (project.video) {
+        visualFrame.className = 'visual-frame is-showcase';
+        visualFrame.innerHTML = `<video class="video-preview" src="${project.video}" controls playsinline preload="metadata"></video>`;
+        return;
+      }
+
+      if (project.image) {
+        visualFrame.className = 'visual-frame is-showcase';
+        visualFrame.innerHTML = `<img class="showcase-image" src="${project.image}" data-full="${project.image}" alt="" loading="lazy" />`;
+        return;
+      }
+
+      if (project.gallery && project.gallery.length) {
+        visualFrame.className = 'visual-frame is-gallery';
+        visualFrame.innerHTML = `
+          <div class="gallery-grid">
+            ${project.gallery.map((image) => `<img src="${image}" data-full="${image}" alt="" loading="lazy" />`).join('')}
+          </div>
+        `;
+        return;
+      }
+
       visualFrame.className = `visual-frame is-${project.category}`;
 
       if (project.category === 'web') {
@@ -1454,7 +1561,29 @@
       projectDescription.textContent = localize(project.description);
       categoryKicker.textContent = dictionary[currentLang].categories[project.category];
       facts.innerHTML = project.facts[currentLang].map((fact) => `<span class="fact">${fact}</span>`).join('');
+      if (project.url) {
+        previewArt.classList.add('has-url');
+        openSiteBtn.onclick = (event) => {
+          event.stopPropagation();
+          window.open(project.url, '_blank');
+        };
+      } else {
+        previewArt.classList.remove('has-url');
+        openSiteBtn.onclick = null;
+      }
       renderVisual(project);
+    }
+
+    function openLightbox(src) {
+      lightboxImage.src = src;
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('is-open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImage.src = '';
     }
 
     function setLanguage(lang) {
@@ -1470,6 +1599,21 @@
 
     document.querySelectorAll('.lang-btn').forEach((button) => {
       button.addEventListener('click', () => setLanguage(button.dataset.lang));
+    });
+
+    visualFrame.addEventListener('click', (event) => {
+      const image = event.target.closest('img[data-full]');
+      if (!image) return;
+      event.stopPropagation();
+      openLightbox(image.dataset.full);
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeLightbox();
     });
 
     setLanguage(currentLang);
