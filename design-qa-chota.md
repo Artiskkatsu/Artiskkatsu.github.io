@@ -19,6 +19,7 @@
 - The former single Chota preview is now a case-study gallery with the supplied homepage, demo/knowledge-base screen, and workflow/footer screen in the requested order.
 - Focused capture shows the selected Chota project and the first two supplied screens rendered proportionally inside the existing portfolio frame.
 - Functional check: selecting “02 Chota Web design” updates the preview; the gallery contains three images. The first image opens the lightbox with `chota-hero.jpg`, and Close image returns to the closed state.
+- Button check: the `Open site` button is hidden for Chota while remaining available for projects that still expose an external URL, such as Forestrock.
 - Localization check: switching to English updates the project title and hero alt text, then returns to Polish.
 - Console check: no browser errors or warnings were reported after the interaction tests.
 

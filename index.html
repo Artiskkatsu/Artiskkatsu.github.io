@@ -1303,6 +1303,7 @@
             'Chota — section explaining document uploads, indexing and access.'
           ]
         },
+        hideOpenSite: true,
         url: 'https://chota.by/'
       },
       {
@@ -1742,7 +1743,7 @@
       projectDescription.textContent = localize(project.description);
       categoryKicker.textContent = dictionary[currentLang].categories[project.category];
       facts.innerHTML = project.facts[currentLang].map((fact) => `<span class="fact">${fact}</span>`).join('');
-      if (project.url) {
+      if (project.url && !project.hideOpenSite) {
         previewArt.classList.add('has-url');
         openSiteBtn.onclick = (event) => {
           event.stopPropagation();
