@@ -1171,7 +1171,7 @@
   </div>
 
   <script>
-    const categoryOrder = ['all', 'web', 'identity', 'editorial', 'packaging', 'edits'];
+    const categoryOrder = ['all', 'web', 'identity', 'editorial', 'presentation', 'packaging', 'edits'];
 
     const dictionary = {
       pl: {
@@ -1209,6 +1209,7 @@
           web: 'Web design',
           identity: 'Identyfikacje',
           editorial: 'Editorial',
+          presentation: 'Prezentacje',
           packaging: 'Packaging',
           edits: 'Edits'
         }
@@ -1248,6 +1249,7 @@
           web: 'Web design',
           identity: 'Identity',
           editorial: 'Editorial',
+          presentation: 'Presentations',
           packaging: 'Packaging',
           edits: 'Edits'
         }
@@ -1304,17 +1306,43 @@
       {
         number: '04',
         category: 'web',
-        short: { pl: 'Restauracja', en: 'Restaurant' },
-        title: { pl: 'Strona restauracji', en: 'Restaurant website page' },
+        short: { pl: 'Purr Home', en: 'Purr Home' },
+        title: { pl: 'Strona schroniska Purr Home', en: 'Purr Home cat shelter website' },
         type: { pl: 'Landing page', en: 'Landing page' },
-        label: { pl: 'Strona restauracji', en: 'Restaurant page' },
+        label: { pl: 'Purr Home', en: 'Purr Home' },
         description: {
-          pl: 'Strona dla restauracji z menu, wyróżnikami i czytelną strukturą sekcji.',
-          en: 'A restaurant page with menu highlights and a clear section structure.'
+          pl: 'Strona schroniska Purr Home z profilami kotów, zasadami opieki, menu i ścieżką adopcji.',
+          en: 'A Purr Home shelter website with cat profiles, care guidance, menu and an adoption path.'
         },
-        facts: { pl: ['HTML/CSS', 'layout', 'landing'], en: ['HTML/CSS', 'layout', 'landing'] },
-        color: '#b8c0bd',
-        previewImage: 'purrhome.png'
+        facts: { pl: ['HTML/CSS', 'web design', 'shelter site'], en: ['HTML/CSS', 'web design', 'shelter site'] },
+        color: '#6d9b86',
+        caseStudy: true,
+        gallery: [
+          'purr-home-hero.jpg',
+          'purr-home-how-it-works.jpg',
+          'purr-home-menu.jpg',
+          'purr-home-rules.jpg',
+          'purr-home-mission.jpg',
+          'purr-home-cats.jpg'
+        ],
+        galleryAlt: {
+          pl: [
+            'Purr Home — strona główna schroniska dla kotów.',
+            'Purr Home — sekcja Jak to działa.',
+            'Purr Home — menu kawiarni.',
+            'Purr Home — sześć prostych zasad przed spotkaniem z kotem.',
+            'Purr Home — misja i partnerzy schroniska.',
+            'Purr Home — profile kotów i karta Ryzhik.'
+          ],
+          en: [
+            'Purr Home — cat shelter homepage.',
+            'Purr Home — How it works section.',
+            'Purr Home — cafe menu.',
+            'Purr Home — six simple rules before meeting a cat.',
+            'Purr Home — shelter mission and partners.',
+            'Purr Home — cat profiles and the Ryzhik card.'
+          ]
+        }
       },
       {
         number: '05',
@@ -1432,8 +1460,8 @@
         type: { pl: 'Brand system', en: 'Brand system' },
         label: { pl: 'Missing Objects', en: 'Missing Objects' },
         description: {
-          pl: 'Identyfikacja wizualna archiwum pamięci: typografia, kolor, zestaw archiwizacyjny, kampania plakatowa i koncepcja cyfrowego archiwum.',
-          en: 'A visual identity for a memory archive, spanning typography, color, an archive kit, a poster campaign and a digital archive concept.'
+          pl: 'Identyfikacja wizualna archiwum pamięci: typografia, kolor, zestaw archiwizacyjny i kampania plakatowa.',
+          en: 'A visual identity for a memory archive, spanning typography, color, an archive kit and a poster campaign.'
         },
         facts: {
           pl: ['brand identity', 'editorial', 'archive system'],
@@ -1452,13 +1480,48 @@
             'Missing Objects — główna prezentacja identyfikacji i pakiet archiwizacyjny.',
             'Missing Objects — szczegóły systemu identyfikacji wizualnej.',
             'Missing Objects — karty, koperty, fotografie i etykiety zestawu archiwizacyjnego.',
-            'Missing Objects — kampania plakatowa i interfejs cyfrowego archiwum.'
+            'Missing Objects — kampania plakatowa.'
           ],
           en: [
             'Missing Objects — identity overview and archive package.',
             'Missing Objects — visual identity system details.',
             'Missing Objects — archive kit with cards, envelopes, photographs and labels.',
-            'Missing Objects — poster campaign and digital archive interface.'
+            'Missing Objects — poster campaign.'
+          ]
+        }
+      },
+      {
+        number: '12',
+        category: 'presentation',
+        short: { pl: 'The Cube', en: 'The Cube' },
+        title: { pl: 'Prezentacja koncepcji reklamowej The Cube', en: 'The Cube advertising concept presentation' },
+        type: { pl: 'Prezentacja', en: 'Presentation' },
+        label: { pl: 'The Cube', en: 'The Cube' },
+        description: {
+          pl: 'Trzyczęściowa prezentacja koncepcji nośnika reklamowego 360°: wizja produktu, sposób wyróżnienia w przestrzeni handlowej i plan uruchomienia pierwszych konstrukcji.',
+          en: 'A three-part presentation for a 360° advertising display, covering the product vision, its impact in retail spaces and the launch plan for the first installations.'
+        },
+        facts: {
+          pl: ['presentation', 'advertising', '360° display'],
+          en: ['presentation', 'advertising', '360° display']
+        },
+        color: '#bcc5d0',
+        caseStudy: true,
+        gallery: [
+          'the-cube-vision.jpg',
+          'the-cube-360-view.jpg',
+          'the-cube-launch.jpg'
+        ],
+        galleryAlt: {
+          pl: [
+            'The Cube — slajd otwierający z wizją nośnika reklamowego 360°.',
+            'The Cube — slajd prezentujący widok 360° i przewagę przestrzennej konstrukcji.',
+            'The Cube — slajd z planem uruchomienia pierwszych konstrukcji we wrześniu i październiku 2026.'
+          ],
+          en: [
+            'The Cube — opening slide presenting the vision for a 360° advertising display.',
+            'The Cube — slide showing the 360° view and the impact of the spatial format.',
+            'The Cube — launch slide for the first installations in September and October 2026.'
           ]
         }
       }
