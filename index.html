@@ -413,6 +413,26 @@
       cursor: zoom-in;
     }
 
+    .visual-frame.is-case-study {
+      display: grid;
+      align-content: start;
+      pointer-events: auto;
+    }
+
+    .case-study-gallery {
+      display: grid;
+      gap: clamp(12px, 2vw, 20px);
+    }
+
+    .case-study-gallery img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid rgba(25, 24, 21, 0.2);
+      background: #f1efe9;
+      cursor: zoom-in;
+    }
+
     .visual-frame.is-showcase {
       display: grid;
       place-items: center;
@@ -1187,7 +1207,7 @@
         categories: {
           all: 'Wszystko',
           web: 'Web design',
-          identity: 'Logotypy',
+          identity: 'Identyfikacje',
           editorial: 'Editorial',
           packaging: 'Packaging',
           edits: 'Edits'
@@ -1226,7 +1246,7 @@
         categories: {
           all: 'All',
           web: 'Web design',
-          identity: 'Logos',
+          identity: 'Identity',
           editorial: 'Editorial',
           packaging: 'Packaging',
           edits: 'Edits'
@@ -1403,6 +1423,44 @@
           'forestrock-instagram-06.png',
           'forestrock-instagram-07.png'
         ]
+      },
+      {
+        number: '11',
+        category: 'identity',
+        short: { pl: 'Missing Objects', en: 'Missing Objects' },
+        title: { pl: 'System identyfikacji wizualnej Missing Objects', en: 'Missing Objects visual identity system' },
+        type: { pl: 'Brand system', en: 'Brand system' },
+        label: { pl: 'Missing Objects', en: 'Missing Objects' },
+        description: {
+          pl: 'Identyfikacja wizualna archiwum pamięci: typografia, kolor, zestaw archiwizacyjny, kampania plakatowa i koncepcja cyfrowego archiwum.',
+          en: 'A visual identity for a memory archive, spanning typography, color, an archive kit, a poster campaign and a digital archive concept.'
+        },
+        facts: {
+          pl: ['brand identity', 'editorial', 'archive system'],
+          en: ['brand identity', 'editorial', 'archive system']
+        },
+        color: '#dedbd3',
+        caseStudy: true,
+        gallery: [
+          'missing-objects-cover.jpg',
+          'missing-objects-brand-system-detail.jpg',
+          'missing-objects-archive-kit.jpg',
+          'missing-objects-poster-digital-archive.jpg'
+        ],
+        galleryAlt: {
+          pl: [
+            'Missing Objects — główna prezentacja identyfikacji i pakiet archiwizacyjny.',
+            'Missing Objects — szczegóły systemu identyfikacji wizualnej.',
+            'Missing Objects — karty, koperty, fotografie i etykiety zestawu archiwizacyjnego.',
+            'Missing Objects — kampania plakatowa i interfejs cyfrowego archiwum.'
+          ],
+          en: [
+            'Missing Objects — identity overview and archive package.',
+            'Missing Objects — visual identity system details.',
+            'Missing Objects — archive kit with cards, envelopes, photographs and labels.',
+            'Missing Objects — poster campaign and digital archive interface.'
+          ]
+        }
       }
     ];
 
@@ -1483,6 +1541,17 @@
     }
 
     function renderVisual(project) {
+      if (project.caseStudy && project.gallery && project.gallery.length) {
+        const altText = project.galleryAlt ? project.galleryAlt[currentLang] : [];
+        visualFrame.className = 'visual-frame is-case-study';
+        visualFrame.innerHTML = `
+          <div class="case-study-gallery">
+            ${project.gallery.map((image, index) => `<img src="${image}" data-full="${image}" alt="${altText[index] || localize(project.title)}" loading="${index === 0 ? 'eager' : 'lazy'}" />`).join('')}
+          </div>
+        `;
+        return;
+      }
+
       if (project.previewImage) {
         visualFrame.className = 'visual-frame is-site-preview';
         visualFrame.innerHTML = `<img class="site-preview-image" src="${project.previewImage}" data-full="${project.previewImage}" alt="" loading="lazy" />`;
